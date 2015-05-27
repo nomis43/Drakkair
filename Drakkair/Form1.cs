@@ -16,5 +16,11 @@ namespace Drakkair
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormVisuOffres formtest = new FormVisuOffres();
+            formtest.ShowDialog();
+        }
     }
 }
