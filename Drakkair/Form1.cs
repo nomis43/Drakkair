@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Drakkair
 {
-    public partial class MainForm : Form
+    public partial class FormMain : Form
     {
-        public MainForm()
+        public FormMain()
         {
             InitializeComponent();
         }
