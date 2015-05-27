@@ -1,6 +1,6 @@
 ﻿namespace Drakkair
 {
-    partial class MainForm
+	partial class FormMain
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
