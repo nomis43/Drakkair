@@ -288,3 +288,5 @@ FakesAssemblies/
 # Visual Studio 6 workspace options file
 *.opt
 >>>>>>> ea24964802518f9363a97fe3089bc9318767911b
+
+*.ldb
