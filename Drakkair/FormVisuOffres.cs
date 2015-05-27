@@ -37,9 +37,17 @@ namespace Drakkair
            OleDbDataAdapter da = new OleDbDataAdapter(req, this.co);
            da.Fill(this.ds, "offres");
 
-           textBoxCode.DataBindings.Add(new Binding("Text", ds, "offres.Code"));
+          //textBoxCode.DataBindings.Add(new Binding("Text", ds, "offres.Code"));
 
+           BindingSource customersBindingSource = new BindingSource();
+           customersBindingSource.DataSource = ds.Tables["offres"];
 
+           BindingNavigator customersBindingNavigator = new BindingNavigator(true);
+           customersBindingNavigator.BindingSource = customersBindingSource;
+           customersBindingNavigator.Dock = DockStyle.Bottom;
+           this.Controls.Add(customersBindingNavigator);
+           
+            textBoxCode.DataBindings.Add(new Binding("Text", customersBindingSource , "offres.Code"));
 
         }
     }
