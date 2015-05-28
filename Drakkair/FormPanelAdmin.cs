@@ -11,19 +11,19 @@ using System.Windows.Forms;
 
 namespace Drakkair
 {
-    public partial class FormAjoutVoyage : Form
+    public partial class FormPanelAdmin : Form
     {
-        DataSet ds = new DataSet();
+        DataSet ds = new DataSet();   // DataSet global utilisé pour stocker les résultats de requetes sur ce form
         OleDbConnection co = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=..\..\..\Drakkair.mdb");
 
         bool AdminMode;
 
-        public FormAjoutVoyage()
+        public FormPanelAdmin()
         {
             InitializeComponent();
         }
 
-        public FormAjoutVoyage(bool AdminMode) : this()
+        public FormPanelAdmin(bool AdminMode) : this()
         {
             this.AdminMode = AdminMode;
         }
@@ -33,12 +33,20 @@ namespace Drakkair
             this.ChargerCombos();
         }
 
+        /// <summary>
+        ///     Fonction utilisée pour charger un resultat de requête SQL dans le DataSet global ds.
+        /// </summary>
+        /// <param name="req">Requête SQL</param>
+        /// <param name="table">Nom de la table de ds dans laquelle va être stocké le resultat de la requête.</param>
         private void ChargerBDD(string req, string table)
         {
             OleDbDataAdapter da = new OleDbDataAdapter(req, this.co);
             da.Fill(this.ds, table);
         }
 
+        /// <summary>
+        /// Procédure utilisée pour charger les ComboBox du form.
+        /// </summary>
         private void ChargerCombos()
         {
             string reqHebergt = @"SELECT * FROM tblHebergement";
@@ -75,6 +83,28 @@ namespace Drakkair
             MessageBox.Show(req);
         }
 
+        private void buttonPhoto_Click(object sender, EventArgs e)
+        {
+            labelPhoto.Text = SelectFichier();
+        }
+
+        private void buttonVignette_Click(object sender, EventArgs e)
+        {
+            labelVignette.Text = SelectFichier();
+        }
+
+        /// <summary>
+        /// Procédure qui ouvre un OpenFileDialog et retourne le fichier selectionné.
+        /// </summary>
+        /// <returns></returns>
+        private string SelectFichier()
+        {
+            //TODO : Autoriser la selection d'images uniquement
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Multiselect = false;
+            ofd.ShowDialog();
+            return ofd.FileName;
+        }
 
     }
 }

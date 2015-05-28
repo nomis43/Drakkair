@@ -16,7 +16,7 @@ namespace Drakkair
 		/// <summary>
 		/// Connexion à la BDD.
 		/// </summary>
-		private OleDbConnection DB = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=..\Drakkair.mdb");
+		private OleDbConnection DB = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=..\..\..\Drakkair.mdb");
 		// ----------------------------------------------------------------
 
 		public FormMain()

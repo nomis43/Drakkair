@@ -65,19 +65,19 @@
     <Compile Include="FormMain.designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAjoutVoyage.cs">
+    <Compile Include="FormPanelAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAjoutVoyage.Designer.cs">
-      <DependentUpon>FormAjoutVoyage.cs</DependentUpon>
+    <Compile Include="FormPanelAdmin.Designer.cs">
+      <DependentUpon>FormPanelAdmin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAjoutVoyage.resx">
-      <DependentUpon>FormAjoutVoyage.cs</DependentUpon>
+    <EmbeddedResource Include="FormPanelAdmin.resx">
+      <DependentUpon>FormPanelAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

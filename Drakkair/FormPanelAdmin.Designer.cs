@@ -1,6 +1,6 @@
 ﻿namespace Drakkair
 {
-    partial class FormAjoutVoyage
+    partial class FormPanelAdmin
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,13 @@
         private void InitializeComponent()
         {
             this.tabBox = new System.Windows.Forms.TabControl();
-            this.tabPage = new System.Windows.Forms.TabPage();
+            this.tabAjoutVoyage = new System.Windows.Forms.TabPage();
+            this.labelVignette = new System.Windows.Forms.Label();
+            this.labelPhoto = new System.Windows.Forms.Label();
+            this.buttonVignette = new System.Windows.Forms.Button();
+            this.buttonPhoto = new System.Windows.Forms.Button();
+            this.checkboxPromotion = new System.Windows.Forms.CheckBox();
+            this.btnAjouter = new System.Windows.Forms.Button();
             this.lblNbJours = new System.Windows.Forms.Label();
             this.lblPrix = new System.Windows.Forms.Label();
             this.textPrix = new System.Windows.Forms.TextBox();
@@ -44,51 +50,113 @@
             this.lblThematique = new System.Windows.Forms.Label();
             this.comboHebergement = new System.Windows.Forms.ComboBox();
             this.comboThematique = new System.Windows.Forms.ComboBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnAjouter = new System.Windows.Forms.Button();
+            this.tabAjoutClient = new System.Windows.Forms.TabPage();
             this.tabBox.SuspendLayout();
-            this.tabPage.SuspendLayout();
+            this.tabAjoutVoyage.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabBox
             // 
-            this.tabBox.Controls.Add(this.tabPage);
-            this.tabBox.Controls.Add(this.tabPage2);
+            this.tabBox.Controls.Add(this.tabAjoutVoyage);
+            this.tabBox.Controls.Add(this.tabAjoutClient);
             this.tabBox.Location = new System.Drawing.Point(13, 13);
             this.tabBox.Name = "tabBox";
             this.tabBox.SelectedIndex = 0;
             this.tabBox.Size = new System.Drawing.Size(643, 392);
             this.tabBox.TabIndex = 0;
             // 
-            // tabPage
+            // tabAjoutVoyage
             // 
-            this.tabPage.Controls.Add(this.btnAjouter);
-            this.tabPage.Controls.Add(this.lblNbJours);
-            this.tabPage.Controls.Add(this.lblPrix);
-            this.tabPage.Controls.Add(this.textPrix);
-            this.tabPage.Controls.Add(this.textNbJours);
-            this.tabPage.Controls.Add(this.lblDescription);
-            this.tabPage.Controls.Add(this.textDescr);
-            this.tabPage.Controls.Add(this.textDest);
-            this.tabPage.Controls.Add(this.lblDestination);
-            this.tabPage.Controls.Add(this.textCode);
-            this.tabPage.Controls.Add(this.lblCode);
-            this.tabPage.Controls.Add(this.lblHebergement);
-            this.tabPage.Controls.Add(this.lblThematique);
-            this.tabPage.Controls.Add(this.comboHebergement);
-            this.tabPage.Controls.Add(this.comboThematique);
-            this.tabPage.Location = new System.Drawing.Point(4, 22);
-            this.tabPage.Name = "tabPage";
-            this.tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage.Size = new System.Drawing.Size(635, 366);
-            this.tabPage.TabIndex = 0;
-            this.tabPage.Text = "Ajout d\'un voyage";
-            this.tabPage.UseVisualStyleBackColor = true;
+            this.tabAjoutVoyage.Controls.Add(this.labelVignette);
+            this.tabAjoutVoyage.Controls.Add(this.labelPhoto);
+            this.tabAjoutVoyage.Controls.Add(this.buttonVignette);
+            this.tabAjoutVoyage.Controls.Add(this.buttonPhoto);
+            this.tabAjoutVoyage.Controls.Add(this.checkboxPromotion);
+            this.tabAjoutVoyage.Controls.Add(this.btnAjouter);
+            this.tabAjoutVoyage.Controls.Add(this.lblNbJours);
+            this.tabAjoutVoyage.Controls.Add(this.lblPrix);
+            this.tabAjoutVoyage.Controls.Add(this.textPrix);
+            this.tabAjoutVoyage.Controls.Add(this.textNbJours);
+            this.tabAjoutVoyage.Controls.Add(this.lblDescription);
+            this.tabAjoutVoyage.Controls.Add(this.textDescr);
+            this.tabAjoutVoyage.Controls.Add(this.textDest);
+            this.tabAjoutVoyage.Controls.Add(this.lblDestination);
+            this.tabAjoutVoyage.Controls.Add(this.textCode);
+            this.tabAjoutVoyage.Controls.Add(this.lblCode);
+            this.tabAjoutVoyage.Controls.Add(this.lblHebergement);
+            this.tabAjoutVoyage.Controls.Add(this.lblThematique);
+            this.tabAjoutVoyage.Controls.Add(this.comboHebergement);
+            this.tabAjoutVoyage.Controls.Add(this.comboThematique);
+            this.tabAjoutVoyage.Location = new System.Drawing.Point(4, 22);
+            this.tabAjoutVoyage.Name = "tabAjoutVoyage";
+            this.tabAjoutVoyage.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAjoutVoyage.Size = new System.Drawing.Size(635, 366);
+            this.tabAjoutVoyage.TabIndex = 0;
+            this.tabAjoutVoyage.Text = "Ajout voyage";
+            this.tabAjoutVoyage.UseVisualStyleBackColor = true;
+            // 
+            // labelVignette
+            // 
+            this.labelVignette.AutoSize = true;
+            this.labelVignette.Location = new System.Drawing.Point(104, 125);
+            this.labelVignette.Name = "labelVignette";
+            this.labelVignette.Size = new System.Drawing.Size(16, 13);
+            this.labelVignette.TabIndex = 19;
+            this.labelVignette.Text = "...";
+            // 
+            // labelPhoto
+            // 
+            this.labelPhoto.AutoSize = true;
+            this.labelPhoto.Location = new System.Drawing.Point(104, 96);
+            this.labelPhoto.Name = "labelPhoto";
+            this.labelPhoto.Size = new System.Drawing.Size(16, 13);
+            this.labelPhoto.TabIndex = 18;
+            this.labelPhoto.Text = "...";
+            // 
+            // buttonVignette
+            // 
+            this.buttonVignette.Location = new System.Drawing.Point(17, 120);
+            this.buttonVignette.Name = "buttonVignette";
+            this.buttonVignette.Size = new System.Drawing.Size(84, 23);
+            this.buttonVignette.TabIndex = 17;
+            this.buttonVignette.Text = "Ajout Vignette";
+            this.buttonVignette.UseVisualStyleBackColor = true;
+            this.buttonVignette.Click += new System.EventHandler(this.buttonVignette_Click);
+            // 
+            // buttonPhoto
+            // 
+            this.buttonPhoto.Location = new System.Drawing.Point(17, 91);
+            this.buttonPhoto.Name = "buttonPhoto";
+            this.buttonPhoto.Size = new System.Drawing.Size(84, 23);
+            this.buttonPhoto.TabIndex = 16;
+            this.buttonPhoto.Text = "Ajout Photo";
+            this.buttonPhoto.UseVisualStyleBackColor = true;
+            this.buttonPhoto.Click += new System.EventHandler(this.buttonPhoto_Click);
+            // 
+            // checkboxPromotion
+            // 
+            this.checkboxPromotion.AutoSize = true;
+            this.checkboxPromotion.Location = new System.Drawing.Point(107, 341);
+            this.checkboxPromotion.Name = "checkboxPromotion";
+            this.checkboxPromotion.Size = new System.Drawing.Size(73, 17);
+            this.checkboxPromotion.TabIndex = 15;
+            this.checkboxPromotion.Text = "Promotion";
+            this.checkboxPromotion.UseVisualStyleBackColor = true;
+            // 
+            // btnAjouter
+            // 
+            this.btnAjouter.Location = new System.Drawing.Point(531, 337);
+            this.btnAjouter.Name = "btnAjouter";
+            this.btnAjouter.Size = new System.Drawing.Size(75, 23);
+            this.btnAjouter.TabIndex = 14;
+            this.btnAjouter.Text = "Ajouter Offre";
+            this.btnAjouter.UseVisualStyleBackColor = true;
+            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
             // lblNbJours
             // 
             this.lblNbJours.AutoSize = true;
-            this.lblNbJours.Location = new System.Drawing.Point(14, 281);
+            this.lblNbJours.Location = new System.Drawing.Point(14, 308);
             this.lblNbJours.Name = "lblNbJours";
             this.lblNbJours.Size = new System.Drawing.Size(84, 13);
             this.lblNbJours.TabIndex = 13;
@@ -97,7 +165,7 @@
             // lblPrix
             // 
             this.lblPrix.AutoSize = true;
-            this.lblPrix.Location = new System.Drawing.Point(470, 281);
+            this.lblPrix.Location = new System.Drawing.Point(470, 308);
             this.lblPrix.Name = "lblPrix";
             this.lblPrix.Size = new System.Drawing.Size(24, 13);
             this.lblPrix.TabIndex = 12;
@@ -105,14 +173,14 @@
             // 
             // textPrix
             // 
-            this.textPrix.Location = new System.Drawing.Point(506, 278);
+            this.textPrix.Location = new System.Drawing.Point(506, 305);
             this.textPrix.Name = "textPrix";
             this.textPrix.Size = new System.Drawing.Size(100, 20);
             this.textPrix.TabIndex = 11;
             // 
             // textNbJours
             // 
-            this.textNbJours.Location = new System.Drawing.Point(107, 278);
+            this.textNbJours.Location = new System.Drawing.Point(107, 305);
             this.textNbJours.Name = "textNbJours";
             this.textNbJours.Size = new System.Drawing.Size(100, 20);
             this.textNbJours.TabIndex = 10;
@@ -120,7 +188,7 @@
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(23, 121);
+            this.lblDescription.Location = new System.Drawing.Point(23, 161);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(60, 13);
             this.lblDescription.TabIndex = 9;
@@ -128,7 +196,7 @@
             // 
             // textDescr
             // 
-            this.textDescr.Location = new System.Drawing.Point(107, 118);
+            this.textDescr.Location = new System.Drawing.Point(107, 158);
             this.textDescr.Multiline = true;
             this.textDescr.Name = "textDescr";
             this.textDescr.Size = new System.Drawing.Size(499, 130);
@@ -152,6 +220,7 @@
             // 
             // textCode
             // 
+            this.textCode.Enabled = false;
             this.textCode.Location = new System.Drawing.Point(107, 23);
             this.textCode.Name = "textCode";
             this.textCode.Size = new System.Drawing.Size(146, 20);
@@ -200,38 +269,28 @@
             this.comboThematique.Size = new System.Drawing.Size(147, 21);
             this.comboThematique.TabIndex = 0;
             // 
-            // tabPage2
+            // tabAjoutClient
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(635, 332);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabAjoutClient.Location = new System.Drawing.Point(4, 22);
+            this.tabAjoutClient.Name = "tabAjoutClient";
+            this.tabAjoutClient.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAjoutClient.Size = new System.Drawing.Size(635, 366);
+            this.tabAjoutClient.TabIndex = 1;
+            this.tabAjoutClient.Text = "Ajout client";
+            this.tabAjoutClient.UseVisualStyleBackColor = true;
             // 
-            // btnAjouter
-            // 
-            this.btnAjouter.Location = new System.Drawing.Point(531, 327);
-            this.btnAjouter.Name = "btnAjouter";
-            this.btnAjouter.Size = new System.Drawing.Size(75, 23);
-            this.btnAjouter.TabIndex = 14;
-            this.btnAjouter.Text = "Ajouter Offre";
-            this.btnAjouter.UseVisualStyleBackColor = true;
-            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
-            // 
-            // FormAjoutVoyage
+            // FormPanelAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(668, 417);
             this.Controls.Add(this.tabBox);
-            this.Name = "FormAjoutVoyage";
+            this.Name = "FormPanelAdmin";
             this.Text = "Ajout d\'un voyage";
             this.Load += new System.EventHandler(this.FormAjoutVoyage_Load);
             this.tabBox.ResumeLayout(false);
-            this.tabPage.ResumeLayout(false);
-            this.tabPage.PerformLayout();
+            this.tabAjoutVoyage.ResumeLayout(false);
+            this.tabAjoutVoyage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -239,8 +298,8 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabBox;
-        private System.Windows.Forms.TabPage tabPage;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabAjoutVoyage;
+        private System.Windows.Forms.TabPage tabAjoutClient;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.TextBox textDescr;
         private System.Windows.Forms.TextBox textDest;
@@ -256,5 +315,10 @@
         private System.Windows.Forms.TextBox textNbJours;
         private System.Windows.Forms.Label lblNbJours;
         private System.Windows.Forms.Button btnAjouter;
+        private System.Windows.Forms.Button buttonVignette;
+        private System.Windows.Forms.Button buttonPhoto;
+        private System.Windows.Forms.CheckBox checkboxPromotion;
+        private System.Windows.Forms.Label labelVignette;
+        private System.Windows.Forms.Label labelPhoto;
     }
 }
