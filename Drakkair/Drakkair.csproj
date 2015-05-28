@@ -44,6 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\LinkButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LinkButton.Designer.cs">
+      <DependentUpon>LinkButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UserButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\UserButton.Designer.cs">
+      <DependentUpon>UserButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -52,6 +64,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\LinkButton.resx">
+      <DependentUpon>LinkButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
