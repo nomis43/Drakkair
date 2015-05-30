@@ -56,6 +56,12 @@
     <Compile Include="Controls\UserButton.Designer.cs">
       <DependentUpon>UserButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UserTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\UserTextBox.Designer.cs">
+      <DependentUpon>UserTextBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
