@@ -17,12 +17,22 @@ namespace Drakkair
         
         DataSet ds = new DataSet();
 
+        BindingNavigator customersBindingNavigator = new BindingNavigator(true);
+
+        BindingSource customersBindingSource = new BindingSource();
+        TextBox companyNameTextBox = new TextBox();
+
         public FormVisuOffres()
         {
             InitializeComponent();
-           
+
+            this.customersBindingNavigator.BindingSource = customersBindingSource;
+            this.customersBindingNavigator.Dock = DockStyle.Bottom;
+            this.Controls.Add(customersBindingNavigator);
 
 
+            this.companyNameTextBox.Dock = DockStyle.Bottom;
+            this.Controls.Add(this.companyNameTextBox);
         }
 
         private void FormVisuOffres_Load(object sender, EventArgs e)
@@ -35,19 +45,22 @@ namespace Drakkair
 
             
            OleDbDataAdapter da = new OleDbDataAdapter(req, this.co);
-           da.Fill(this.ds, "offres");
 
-          //textBoxCode.DataBindings.Add(new Binding("Text", ds, "offres.Code"));
+           ds.Tables.Add("offres");
+           da.Fill(ds.Tables["offres"]);
 
-           BindingSource customersBindingSource = new BindingSource();
-           customersBindingSource.DataSource = ds.Tables["offres"];
+          // companyNameTextBox.DataBindings.Add(new Binding("Text", ds, "offres.Code"));
 
-           BindingNavigator customersBindingNavigator = new BindingNavigator(true);
-           customersBindingNavigator.BindingSource = customersBindingSource;
-           customersBindingNavigator.Dock = DockStyle.Bottom;
-           this.Controls.Add(customersBindingNavigator);
-           
-            textBoxCode.DataBindings.Add(new Binding("Text", customersBindingSource , "offres.Code"));
+
+           this.customersBindingSource.DataSource = ds.Tables["offres"];
+
+
+           dataGridView1.DataSource = ds.Tables["offres"];
+
+
+
+
+           companyNameTextBox.DataBindings.Add(new Binding("Text", this.customersBindingSource, "Code", true));
 
         }
     }
