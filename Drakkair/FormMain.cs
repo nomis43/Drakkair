@@ -34,6 +34,9 @@ namespace Drakkair
 		private UserTextBox textPrixMax = new UserTextBox();
 		// ----------------------------------------------------------------
 
+		private UserButton buttonDetailsOffres = new UserButton();
+		// ----------------------------------------------------------------
+
 		/// <summary>
 		/// Génère automatiquement des boutons vers les catégories de voyage.
 		/// </summary>
@@ -45,9 +48,10 @@ namespace Drakkair
 				buttonTmp = new LinkButton();
 
 				buttonTmp.Size = new System.Drawing.Size(350, 36);
-				buttonTmp.Tag  = line["id"];
+				buttonTmp.Tag = line["id"];
 				buttonTmp.Text = (string)line["name"];
 				buttonTmp.TextAlign = ContentAlignment.MiddleRight;
+				buttonTmp.Click += new EventHandler(this.RefreshDataGrid);
 
 				panelSideBar.Controls.Add(buttonTmp);
 			}
@@ -75,6 +79,12 @@ namespace Drakkair
 
 			// génération des boutons des catégories
 			InitSideBarCategoryButtons();
+
+			// bouton "Détails des offres"
+			this.buttonDetailsOffres.Text = "Détails des offres";
+			this.buttonDetailsOffres.Width = 310;
+			this.buttonDetailsOffres.Margin = new Padding(20, 20, 20, 0);
+			panelSideBar.Controls.Add(this.buttonDetailsOffres);
 
 			// titre recherche
 			labelTmp = new Label();
@@ -193,7 +203,7 @@ namespace Drakkair
 		// ----------------------------------------------------------------
 
 		/// <summary>
-		/// Rmplit le dataset this.DATA avec les données souhaitées.
+		/// Remplit le dataset this.DATA avec les données souhaitées.
 		/// </summary>
 		private void RetrieveData()
 		{
@@ -211,12 +221,37 @@ namespace Drakkair
 				SELECT NumCategorie AS id, NomCategorie AS name
 				FROM tblHebergement
 			", DB).Fill(DATA, "Pensions");
+
+			new OleDbDataAdapter(@"
+				SELECT
+					CodeVoyage AS [Code de l'offre],
+					Destination,
+					Duree AS [Durée],
+					Description,
+					Prix AS [Tarif en €],
+
+					tblDeparts.cdeVille         AS depart,
+					tblThematique.codeThem      AS theme,
+					tblHebergement.NumCategorie AS pension
+
+				FROM (((tblVoyages
+				
+				INNER JOIN tblDeparts
+				ON tblVoyages.CodeVoyage = tblDeparts.cdeVoyage)
+				
+				INNER JOIN tblThematique
+				ON tblVoyages.TypeThematique = tblThematique.codeThem)
+				
+				INNER JOIN tblHebergement
+				ON tblVoyages.TypeHebergement = tblHebergement.NumCategorie)
+			", DB).Fill(DATA, "Voyages");
 		}
 		// ----------------------------------------------------------------
 
 		public FormMain()
 		{
 			InitializeComponent();
+			dataGridView.ForeColor = Color.Black;
 		}
 		// ----------------------------------------------------------------
 
@@ -232,6 +267,19 @@ namespace Drakkair
 			combo.DataSource = DATA.Tables[tableName];
 			combo.ValueMember = valueMember;
 			combo.DisplayMember = displayMemeber;
+		}
+		// ----------------------------------------------------------------
+
+		/// <summary>
+		/// Fait une liaison de données sur un data grid view avec une table de this.DATA.
+		/// Sélectionne les lignes à afficher avec une clause SQL.
+		/// </summary>
+		/// <param name="grid">Le data grid viewà lier.</param>
+		/// <param name="tableName">Le nom de la table dans laquelle aller chercher les données.</param>
+		/// <param name="where">La condition pour la sélection des lignes à afficher.</param>
+		private void GridDataLink(DataGridView grid, string tableName, string where)
+		{
+			grid.DataSource = DATA.Tables[tableName].Select(where).CopyToDataTable();
 		}
 		// ----------------------------------------------------------------
 
@@ -252,7 +300,7 @@ namespace Drakkair
 		///		{"nickname", "Ducon"}
 		///	});
 		/// </example>
-		/// <exception cref="IndexOutOfRangeException">Emit automatiquement si le tableau n'a pas les bonnes dimensions.</exception>
+		/// <exception cref="IndexOutOfRangeException">Emise automatiquement si le tableau n'a pas les bonnes dimensions.</exception>
 		private void AddRowToTable(string tableName, object[,] config)
 		{
 			var r = DATA.Tables[tableName].NewRow();
@@ -279,9 +327,9 @@ namespace Drakkair
 			InitSideBar();
 
 			// liaison des données avec les composants
-			ComboDataLink(comboDepart, "Departs", "id", "name");
-			ComboDataLink(comboTheme, "Thematiques", "id", "name");
-			ComboDataLink(comboPension, "Pensions", "id", "name");
+			ComboDataLink(comboDepart,  "Departs",     "id", "name");
+			ComboDataLink(comboTheme,   "Thematiques", "id", "name");
+			ComboDataLink(comboPension, "Pensions",    "id", "name");
 
 			// création de lignes fictives dans les tables pour simuler la sélection de toutes les options.
 			AddRowToTable("Departs", new object[,]{
@@ -301,6 +349,71 @@ namespace Drakkair
 				{"name", "Tout type de pension"}
 			});
 			comboPension.SelectedValue = -1;
+
+			// liaison d'évènements
+			this.buttonAdmin.Click                 += new EventHandler(this.buttonAdmin_Click);
+			this.buttonDetailsOffres.Click         += new EventHandler(this.buttonDetailsOffres_Click);
+
+			this.comboDepart.SelectedIndexChanged  += new EventHandler(this.RefreshDataGrid);
+			this.comboTheme.SelectedIndexChanged   += new EventHandler(this.RefreshDataGrid);
+			this.comboPension.SelectedIndexChanged += new EventHandler(this.RefreshDataGrid);
+
+			this.textPrixMin.TextChanged           += new EventHandler(this.RefreshDataGrid);
+			this.textPrixMax.TextChanged           += new EventHandler(this.RefreshDataGrid);
+		}
+		// ----------------------------------------------------------------
+
+		/// <summary>
+		/// Rafraichit les critères de sélection pour les lignes du data grid view.
+		/// </summary>
+		private void RefreshDataGrid(object sender, EventArgs e)
+		{
+			// si c'est un bouton de recherche par catégorie, on ne tient pas compte des autres critères.
+			if(sender is LinkButton)
+			{
+				GridDataLink(dataGridView, "Voyages", "theme = " + (sender as LinkButton).Tag);
+				return;
+			}
+
+			// sinon, on fait une recheche normale avec rafraichissement des critères
+			var where = new List<string>();
+
+			if(!comboDepart.SelectedValue.Equals(-1))
+				where.Add("depart = '" + comboDepart.SelectedValue + "'");
+
+			if(!comboTheme.SelectedValue.Equals(-1))
+				where.Add("theme = " + comboTheme.SelectedValue);
+
+			if(!comboPension.SelectedValue.Equals(-1))
+				where.Add("pension = '" + comboPension.SelectedValue);
+
+			int min;
+			if(int.TryParse(textPrixMin.Text, out min))
+				where.Add("[Tarif en €] >= " + min);
+
+			int max;
+			if(int.TryParse(textPrixMax.Text, out max))
+				where.Add("[Tarif en €] <= " + max);
+
+			GridDataLink(dataGridView, "Voyages", string.Join(" AND ", where));
+		}
+		// ----------------------------------------------------------------
+
+		/// <summary>
+		/// Appel du formulaire de visualisation des offres.
+		/// </summary>
+		private void buttonDetailsOffres_Click(object sender, EventArgs e)
+		{
+			
+		}
+		// ----------------------------------------------------------------
+
+		/// <summary>
+		/// Appel du formulaire d'administration.
+		/// </summary>
+		private void buttonAdmin_Click(object sender, EventArgs e)
+		{
+
 		}
 		// ----------------------------------------------------------------
 	}
