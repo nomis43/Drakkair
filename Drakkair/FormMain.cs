@@ -437,5 +437,14 @@ namespace Drakkair
 			this.Show();
 		}
 		// ----------------------------------------------------------------
+
+		/// <summary>
+		/// Appel du formulaire d'appréciation des hôtels.
+		/// </summary>
+		private void buttonHotels_Click(object sender, EventArgs e)
+		{
+
+		}
+		// ----------------------------------------------------------------
 	}
 }

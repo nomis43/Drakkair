@@ -31,7 +31,7 @@ namespace Drakkair
 			this.DB = db;
 		}
 		// ----------------------------------------------------------------
-		
+
 		/// <summary>
 		/// Ajoute une ligne dans une table de this.DATA.
 		/// </summary>

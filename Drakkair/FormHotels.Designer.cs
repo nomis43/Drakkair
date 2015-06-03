@@ -465,9 +465,6 @@
 			this.Font = new System.Drawing.Font("Open Sans", 10.8F);
 			this.ForeColor = System.Drawing.Color.White;
 			this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-			this.Name = "FormHotels";
-			this.Text = "FormHotels";
-			this.Load += new System.EventHandler(this.FormHotels_Load);
 			this.tabPage1.ResumeLayout(false);
 			this.tabPanel.ResumeLayout(false);
 			this.tabPage2.ResumeLayout(false);
@@ -482,7 +479,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
 			this.ResumeLayout(false);
-
 		}
 
 		#endregion
@@ -522,6 +518,5 @@
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Label label8;
-
 	}
 }
