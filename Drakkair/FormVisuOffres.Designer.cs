@@ -61,6 +61,7 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.SuspendLayout();
@@ -157,7 +158,7 @@
             // 
             this.textBoxPrix.Location = new System.Drawing.Point(438, 302);
             this.textBoxPrix.Name = "textBoxPrix";
-            this.textBoxPrix.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPrix.Size = new System.Drawing.Size(35, 20);
             this.textBoxPrix.TabIndex = 10;
             // 
             // textBoxHebergement
@@ -339,11 +340,21 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(479, 305);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(13, 13);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "€";
+            // 
             // FormVisuOffres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(561, 524);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.bindingNavigator1);
             this.Controls.Add(this.btn_last);
             this.Controls.Add(this.btn_next);
@@ -367,7 +378,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FormVisuOffres";
-            this.Text = "FormVisuOffres";
+            this.Text = "Visualisation des offres";
             this.Load += new System.EventHandler(this.FormVisuOffres_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
@@ -410,5 +421,6 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.Label label5;
     }
 }

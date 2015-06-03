@@ -21,21 +21,21 @@ namespace Drakkair
         BindingSource bindingsource = new BindingSource();
         public FormVisuOffres(OleDbConnection co)
         {
-            this.connec = co;
+           this.connec = co;
             InitializeComponent();
  
         }
 
         private void FormVisuOffres_Load(object sender, EventArgs e)
         {
-            connec.Open();
+            co.Open();
             string req = @"SELECT v.CodeVoyage as Code, v.Destination, th.libThem as Thematique, h.NomCategorie as Hebergement, v.Description, v.Duree, v.Prix, v.Promotion 
                             FROM tblVoyages v, tblThematique th, tblHebergement h 
                             WHERE v.TypeThematique=th.codeThem 
                             AND v.TypeHebergement=h.NumCategorie";
 
             
-           OleDbDataAdapter da = new OleDbDataAdapter(req, this.connec);
+           OleDbDataAdapter da = new OleDbDataAdapter(req, this.co);
 
            ds.Tables.Add("offres");
            da.Fill(ds.Tables["offres"]);
@@ -61,7 +61,10 @@ namespace Drakkair
             
 
         }
-
+        private void DisplayPosition()
+        {
+            lbl_pos.Text = this.bindingsource.Position.ToString() + "/" + bindingsource.Count;
+        }
         private void btn_first_Click(object sender, EventArgs e)
         {
             bindingsource.MoveFirst();
@@ -88,9 +91,6 @@ namespace Drakkair
             DisplayPosition();
            
         }
-        private void DisplayPosition()
-        {
-            lbl_pos.Text = this.bindingsource.Position.ToString()+"/"+bindingsource.Count;
-        }
+        
     }
 }
