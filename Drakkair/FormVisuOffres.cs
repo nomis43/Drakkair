@@ -63,7 +63,7 @@ namespace Drakkair
         }
         private void DisplayPosition()
         {
-            lbl_pos.Text = this.bindingsource.Position.ToString() + "/" + bindingsource.Count;
+            lbl_pos.Text = this.bindingsource.Position+1.ToString() + "/" + bindingsource.Count;
         }
         private void btn_first_Click(object sender, EventArgs e)
         {
