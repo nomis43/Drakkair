@@ -13,28 +13,29 @@ namespace Drakkair
 {
     public partial class FormVisuOffres : Form
     {
-        OleDbConnection co = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=..\..\..\Drakkair.mdb");
+
+        private OleDbConnection connec ;
         
         DataSet ds = new DataSet();
 
         BindingSource bindingsource = new BindingSource();
-        public FormVisuOffres()
+        public FormVisuOffres(OleDbConnection co)
         {
-           // this.co = co;
+            this.connec = co;
             InitializeComponent();
  
         }
 
         private void FormVisuOffres_Load(object sender, EventArgs e)
         {
-            co.Open();
+            connec.Open();
             string req = @"SELECT v.CodeVoyage as Code, v.Destination, th.libThem as Thematique, h.NomCategorie as Hebergement, v.Description, v.Duree, v.Prix, v.Promotion 
                             FROM tblVoyages v, tblThematique th, tblHebergement h 
                             WHERE v.TypeThematique=th.codeThem 
                             AND v.TypeHebergement=h.NumCategorie";
 
             
-           OleDbDataAdapter da = new OleDbDataAdapter(req, this.co);
+           OleDbDataAdapter da = new OleDbDataAdapter(req, this.connec);
 
            ds.Tables.Add("offres");
            da.Fill(ds.Tables["offres"]);
