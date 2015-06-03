@@ -279,7 +279,9 @@ namespace Drakkair
 		/// <param name="where">La condition pour la sélection des lignes à afficher.</param>
 		private void GridDataLink(DataGridView grid, string tableName, string where)
 		{
-			grid.DataSource = DATA.Tables[tableName].Select(where).CopyToDataTable();
+			grid.DataSource = new DataView(DATA.Tables[tableName]) {
+				RowFilter = where
+			};
 		}
 		// ----------------------------------------------------------------
 
@@ -353,6 +355,7 @@ namespace Drakkair
 			// liaison d'évènements
 			this.buttonAdmin.Click                 += new EventHandler(this.buttonAdmin_Click);
 			this.buttonDetailsOffres.Click         += new EventHandler(this.buttonDetailsOffres_Click);
+			this.buttonHotels.Click                += new EventHandler(this.buttonHotels_Click);
 
 			this.comboDepart.SelectedIndexChanged  += new EventHandler(this.RefreshDataGrid);
 			this.comboTheme.SelectedIndexChanged   += new EventHandler(this.RefreshDataGrid);
@@ -395,6 +398,13 @@ namespace Drakkair
 			if(int.TryParse(textPrixMax.Text, out max))
 				where.Add("[Tarif en €] <= " + max);
 
+			MessageBox.Show(
+				"DEPART  : " + comboDepart.SelectedValue.GetType().ToString() + " / " + comboDepart.SelectedValue.Equals(-1)
+				+ "\nTHEME   : " + comboTheme.SelectedValue.GetType().ToString() + " / " + comboTheme.SelectedValue.Equals(-1)
+				+ "\nPENSION : " + comboPension.SelectedValue.GetType().ToString() + " / " + comboPension.SelectedValue.Equals(-1)
+				+ "\n" + string.Join(" AND ", where)
+			);
+
 			GridDataLink(dataGridView, "Voyages", string.Join(" AND ", where));
 		}
 		// ----------------------------------------------------------------
@@ -412,6 +422,15 @@ namespace Drakkair
 		/// Appel du formulaire d'administration.
 		/// </summary>
 		private void buttonAdmin_Click(object sender, EventArgs e)
+		{
+
+		}
+		// ----------------------------------------------------------------
+
+		/// <summary>
+		/// Appel du formulaire d'appréciation des hôtels.
+		/// </summary>
+		private void buttonHotels_Click(object sender, EventArgs e)
 		{
 
 		}
