@@ -106,6 +106,36 @@ namespace Drakkair
 		// ----------------------------------------------------------------
 
 		/// <summary>
+		/// Fait une liason de données sur une combobox avec une table de this.DATA.
+		/// </summary>
+		/// <param name="combo">La combocob à lier.</param>
+		/// <param name="tableName">Le nom de la table dans laquelle aller chercher les données.</param>
+		/// <param name="valueMember">Valeur pour la propriété combo.ValueMember.</param>
+		/// <param name="displayMemeber">Valeur pour la propriété combo.DisplayMember.</param>
+		private void ComboDataLink(ComboBox combo, string tableName, string valueMember, string displayMemeber)
+		{
+			combo.DataSource = DATA.Tables[tableName];
+			combo.ValueMember = valueMember;
+			combo.DisplayMember = displayMemeber;
+		}
+		// ----------------------------------------------------------------
+
+		/// <summary>
+		/// Fait une liaison de données sur un data grid view avec une table de this.DATA.
+		/// Sélectionne les lignes à afficher avec une clause SQL.
+		/// </summary>
+		/// <param name="grid">Le data grid viewà lier.</param>
+		/// <param name="tableName">Le nom de la table dans laquelle aller chercher les données.</param>
+		/// <param name="where">La condition pour la sélection des lignes à afficher.</param>
+		private void GridDataLink(DataGridView grid, string tableName, string where)
+		{
+			grid.DataSource = new DataView(DATA.Tables[tableName]) {
+				RowFilter = where
+			};
+		}
+		// ----------------------------------------------------------------
+
+		/// <summary>
 		/// Initialise une liste d'hôtels.
 		/// </summary>
 		private void FormHotels_Load(object sender, EventArgs e)
