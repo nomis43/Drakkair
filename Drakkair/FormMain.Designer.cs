@@ -32,13 +32,14 @@
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.panelTopBar = new System.Windows.Forms.Panel();
 			this.buttonAdmin = new System.Windows.Forms.Button();
-			this.pictureLogo = new System.Windows.Forms.PictureBox();
 			this.panelSideBar = new System.Windows.Forms.FlowLayoutPanel();
 			this.dataGridView = new System.Windows.Forms.DataGridView();
+			this.pictureLogo = new System.Windows.Forms.PictureBox();
+			this.buttonHotels = new Drakkair.Controls.UserButton();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.panelTopBar.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
@@ -69,6 +70,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.panelTopBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+			this.panelTopBar.Controls.Add(this.buttonHotels);
 			this.panelTopBar.Controls.Add(this.buttonAdmin);
 			this.panelTopBar.Location = new System.Drawing.Point(350, 0);
 			this.panelTopBar.Margin = new System.Windows.Forms.Padding(0);
@@ -89,16 +91,6 @@
 			this.buttonAdmin.TabIndex = 1;
 			this.buttonAdmin.Text = "ADMIN";
 			this.buttonAdmin.UseVisualStyleBackColor = false;
-			// 
-			// pictureLogo
-			// 
-			this.pictureLogo.Image = global::Drakkair.Properties.Resources.logo;
-			this.pictureLogo.Location = new System.Drawing.Point(0, 0);
-			this.pictureLogo.Margin = new System.Windows.Forms.Padding(0);
-			this.pictureLogo.Name = "pictureLogo";
-			this.pictureLogo.Size = new System.Drawing.Size(350, 150);
-			this.pictureLogo.TabIndex = 3;
-			this.pictureLogo.TabStop = false;
 			// 
 			// panelSideBar
 			// 
@@ -128,9 +120,34 @@
 			this.dataGridView.Size = new System.Drawing.Size(801, 593);
 			this.dataGridView.TabIndex = 4;
 			// 
+			// pictureLogo
+			// 
+			this.pictureLogo.Image = global::Drakkair.Properties.Resources.logo;
+			this.pictureLogo.Location = new System.Drawing.Point(0, 0);
+			this.pictureLogo.Margin = new System.Windows.Forms.Padding(0);
+			this.pictureLogo.Name = "pictureLogo";
+			this.pictureLogo.Size = new System.Drawing.Size(350, 150);
+			this.pictureLogo.TabIndex = 3;
+			this.pictureLogo.TabStop = false;
+			// 
+			// buttonHotels
+			// 
+			this.buttonHotels.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonHotels.AutoSize = true;
+			this.buttonHotels.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(126)))), ((int)(((byte)(53)))));
+			this.buttonHotels.FlatAppearance.BorderSize = 0;
+			this.buttonHotels.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.buttonHotels.Location = new System.Drawing.Point(537, 84);
+			this.buttonHotels.Margin = new System.Windows.Forms.Padding(20, 20, 20, 30);
+			this.buttonHotels.Name = "buttonHotels";
+			this.buttonHotels.Size = new System.Drawing.Size(97, 36);
+			this.buttonHotels.TabIndex = 2;
+			this.buttonHotels.Text = "HÔTELS";
+			this.buttonHotels.UseVisualStyleBackColor = false;
+			// 
 			// FormMain
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
 			this.ClientSize = new System.Drawing.Size(1147, 742);
@@ -143,8 +160,9 @@
 			this.Load += new System.EventHandler(this.FormMain_Load);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.panelTopBar.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
+			this.panelTopBar.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -157,5 +175,6 @@
 		private System.Windows.Forms.PictureBox pictureLogo;
         private System.Windows.Forms.DataGridView dataGridView;
 		private System.Windows.Forms.FlowLayoutPanel panelSideBar;
+		private Controls.UserButton buttonHotels;
 	}
 }

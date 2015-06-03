@@ -62,6 +62,12 @@
     <Compile Include="Controls\UserTextBox.Designer.cs">
       <DependentUpon>UserTextBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormHotels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHotels.Designer.cs">
+      <DependentUpon>FormHotels.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\LinkButton.resx">
       <DependentUpon>LinkButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHotels.resx">
+      <DependentUpon>FormHotels.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
