@@ -34,7 +34,7 @@
             this.buttonVignette = new System.Windows.Forms.Button();
             this.buttonPhoto = new System.Windows.Forms.Button();
             this.checkboxPromotion = new System.Windows.Forms.CheckBox();
-            this.btnAjouter = new System.Windows.Forms.Button();
+            this.buttonValider = new System.Windows.Forms.Button();
             this.lblNbJours = new System.Windows.Forms.Label();
             this.lblPrix = new System.Windows.Forms.Label();
             this.textPrix = new System.Windows.Forms.TextBox();
@@ -52,18 +52,37 @@
             this.tabBox = new System.Windows.Forms.TabControl();
             this.tabAjoutReservations = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.grpGrgrgr = new System.Windows.Forms.GroupBox();
+            this.buttonRecap = new System.Windows.Forms.Button();
+            this.buttonValiderTransaction = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.grpReservation3 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.textboxNbPers3 = new System.Windows.Forms.TextBox();
+            this.comboSelClient3 = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.grpReservation2 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.textboxNbPers2 = new System.Windows.Forms.TextBox();
+            this.comboSelClient2 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.grpReservation1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textboxNbPers1 = new System.Windows.Forms.TextBox();
+            this.comboSelClient1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.tabAjoutVoyage.SuspendLayout();
             this.tabBox.SuspendLayout();
             this.tabAjoutReservations.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.grpGrgrgr.SuspendLayout();
+            this.grpReservation3.SuspendLayout();
+            this.grpReservation2.SuspendLayout();
+            this.grpReservation1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabAjoutVoyage
@@ -73,7 +92,7 @@
             this.tabAjoutVoyage.Controls.Add(this.buttonVignette);
             this.tabAjoutVoyage.Controls.Add(this.buttonPhoto);
             this.tabAjoutVoyage.Controls.Add(this.checkboxPromotion);
-            this.tabAjoutVoyage.Controls.Add(this.btnAjouter);
+            this.tabAjoutVoyage.Controls.Add(this.buttonValider);
             this.tabAjoutVoyage.Controls.Add(this.lblNbJours);
             this.tabAjoutVoyage.Controls.Add(this.lblPrix);
             this.tabAjoutVoyage.Controls.Add(this.textPrix);
@@ -144,15 +163,15 @@
             this.checkboxPromotion.Text = "Promotion";
             this.checkboxPromotion.UseVisualStyleBackColor = true;
             // 
-            // btnAjouter
+            // buttonValider
             // 
-            this.btnAjouter.Location = new System.Drawing.Point(531, 329);
-            this.btnAjouter.Name = "btnAjouter";
-            this.btnAjouter.Size = new System.Drawing.Size(75, 23);
-            this.btnAjouter.TabIndex = 14;
-            this.btnAjouter.Text = "Ajouter Offre";
-            this.btnAjouter.UseVisualStyleBackColor = true;
-            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
+            this.buttonValider.Location = new System.Drawing.Point(531, 329);
+            this.buttonValider.Name = "buttonValider";
+            this.buttonValider.Size = new System.Drawing.Size(75, 23);
+            this.buttonValider.TabIndex = 14;
+            this.buttonValider.Text = "Valider";
+            this.buttonValider.UseVisualStyleBackColor = true;
+            this.buttonValider.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
             // lblNbJours
             // 
@@ -293,77 +312,243 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.grpGrgrgr);
+            this.panel1.Controls.Add(this.buttonRecap);
+            this.panel1.Controls.Add(this.buttonValiderTransaction);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.grpReservation3);
+            this.panel1.Controls.Add(this.grpReservation2);
+            this.panel1.Controls.Add(this.grpReservation1);
             this.panel1.Location = new System.Drawing.Point(3, 6);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(626, 355);
             this.panel1.TabIndex = 0;
             // 
-            // grpGrgrgr
+            // buttonRecap
             // 
-            this.grpGrgrgr.Controls.Add(this.label3);
-            this.grpGrgrgr.Controls.Add(this.dateTimePicker1);
-            this.grpGrgrgr.Controls.Add(this.textBox1);
-            this.grpGrgrgr.Controls.Add(this.comboBox1);
-            this.grpGrgrgr.Controls.Add(this.label2);
-            this.grpGrgrgr.Controls.Add(this.label1);
-            this.grpGrgrgr.Location = new System.Drawing.Point(3, 3);
-            this.grpGrgrgr.Name = "grpGrgrgr";
-            this.grpGrgrgr.Size = new System.Drawing.Size(620, 104);
-            this.grpGrgrgr.TabIndex = 0;
-            this.grpGrgrgr.TabStop = false;
-            this.grpGrgrgr.Text = "groupBox1";
+            this.buttonRecap.Location = new System.Drawing.Point(134, 329);
+            this.buttonRecap.Name = "buttonRecap";
+            this.buttonRecap.Size = new System.Drawing.Size(112, 23);
+            this.buttonRecap.TabIndex = 10;
+            this.buttonRecap.Text = "Récapitulatif";
+            this.buttonRecap.UseVisualStyleBackColor = true;
+            this.buttonRecap.Click += new System.EventHandler(this.buttonRecap_Click);
+            // 
+            // buttonValiderTransaction
+            // 
+            this.buttonValiderTransaction.Location = new System.Drawing.Point(252, 329);
+            this.buttonValiderTransaction.Name = "buttonValiderTransaction";
+            this.buttonValiderTransaction.Size = new System.Drawing.Size(114, 23);
+            this.buttonValiderTransaction.TabIndex = 9;
+            this.buttonValiderTransaction.Text = "Valider transaction";
+            this.buttonValiderTransaction.UseVisualStyleBackColor = true;
+            this.buttonValiderTransaction.Click += new System.EventHandler(this.buttonValiderTransaction_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(372, 329);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Annuler transaction";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // grpReservation3
+            // 
+            this.grpReservation3.Controls.Add(this.label7);
+            this.grpReservation3.Controls.Add(this.dateTimePicker3);
+            this.grpReservation3.Controls.Add(this.textboxNbPers3);
+            this.grpReservation3.Controls.Add(this.comboSelClient3);
+            this.grpReservation3.Controls.Add(this.label8);
+            this.grpReservation3.Controls.Add(this.label9);
+            this.grpReservation3.Location = new System.Drawing.Point(3, 223);
+            this.grpReservation3.Name = "grpReservation3";
+            this.grpReservation3.Size = new System.Drawing.Size(620, 104);
+            this.grpReservation3.TabIndex = 7;
+            this.grpReservation3.TabStop = false;
+            this.grpReservation3.Text = "Réservation n°3";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(378, 62);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(100, 13);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Date de réservation";
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.CustomFormat = "ddMMyyyy";
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker3.Location = new System.Drawing.Point(494, 62);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(101, 20);
+            this.dateTimePicker3.TabIndex = 4;
+            // 
+            // textboxNbPers3
+            // 
+            this.textboxNbPers3.Location = new System.Drawing.Point(133, 62);
+            this.textboxNbPers3.Name = "textboxNbPers3";
+            this.textboxNbPers3.Size = new System.Drawing.Size(84, 20);
+            this.textboxNbPers3.TabIndex = 3;
+            // 
+            // comboSelClient3
+            // 
+            this.comboSelClient3.FormattingEnabled = true;
+            this.comboSelClient3.Location = new System.Drawing.Point(133, 30);
+            this.comboSelClient3.Name = "comboSelClient3";
+            this.comboSelClient3.Size = new System.Drawing.Size(233, 21);
+            this.comboSelClient3.TabIndex = 2;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 65);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(111, 13);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Nombre de personnes";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(16, 33);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(94, 13);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Sélectionner client";
+            // 
+            // grpReservation2
+            // 
+            this.grpReservation2.Controls.Add(this.label4);
+            this.grpReservation2.Controls.Add(this.dateTimePicker2);
+            this.grpReservation2.Controls.Add(this.textboxNbPers2);
+            this.grpReservation2.Controls.Add(this.comboSelClient2);
+            this.grpReservation2.Controls.Add(this.label5);
+            this.grpReservation2.Controls.Add(this.label6);
+            this.grpReservation2.Location = new System.Drawing.Point(3, 113);
+            this.grpReservation2.Name = "grpReservation2";
+            this.grpReservation2.Size = new System.Drawing.Size(620, 104);
+            this.grpReservation2.TabIndex = 6;
+            this.grpReservation2.TabStop = false;
+            this.grpReservation2.Text = "Réservation n°2";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(378, 62);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Date de réservation";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.CustomFormat = "ddMMyyyy";
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker2.Location = new System.Drawing.Point(494, 62);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(101, 20);
+            this.dateTimePicker2.TabIndex = 4;
+            // 
+            // textboxNbPers2
+            // 
+            this.textboxNbPers2.Location = new System.Drawing.Point(133, 62);
+            this.textboxNbPers2.Name = "textboxNbPers2";
+            this.textboxNbPers2.Size = new System.Drawing.Size(84, 20);
+            this.textboxNbPers2.TabIndex = 3;
+            // 
+            // comboSelClient2
+            // 
+            this.comboSelClient2.FormattingEnabled = true;
+            this.comboSelClient2.Location = new System.Drawing.Point(133, 30);
+            this.comboSelClient2.Name = "comboSelClient2";
+            this.comboSelClient2.Size = new System.Drawing.Size(233, 21);
+            this.comboSelClient2.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(16, 65);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(111, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Nombre de personnes";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(16, 33);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(94, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Sélectionner client";
+            // 
+            // grpReservation1
+            // 
+            this.grpReservation1.Controls.Add(this.label3);
+            this.grpReservation1.Controls.Add(this.dateTimePicker1);
+            this.grpReservation1.Controls.Add(this.textboxNbPers1);
+            this.grpReservation1.Controls.Add(this.comboSelClient1);
+            this.grpReservation1.Controls.Add(this.label2);
+            this.grpReservation1.Controls.Add(this.label1);
+            this.grpReservation1.Location = new System.Drawing.Point(3, 3);
+            this.grpReservation1.Name = "grpReservation1";
+            this.grpReservation1.Size = new System.Drawing.Size(620, 104);
+            this.grpReservation1.TabIndex = 0;
+            this.grpReservation1.TabStop = false;
+            this.grpReservation1.Text = "Réservation n°1";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(378, 62);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Date de réservation";
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "ddMMyyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(481, 62);
+            this.dateTimePicker1.Location = new System.Drawing.Point(494, 62);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(101, 20);
             this.dateTimePicker1.TabIndex = 4;
             // 
-            // textBox1
+            // textboxNbPers1
             // 
-            this.textBox1.Location = new System.Drawing.Point(78, 62);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(84, 20);
-            this.textBox1.TabIndex = 3;
+            this.textboxNbPers1.Location = new System.Drawing.Point(133, 62);
+            this.textboxNbPers1.Name = "textboxNbPers1";
+            this.textboxNbPers1.Size = new System.Drawing.Size(84, 20);
+            this.textboxNbPers1.TabIndex = 3;
             // 
-            // comboBox1
+            // comboSelClient1
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(78, 27);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(233, 21);
-            this.comboBox1.TabIndex = 2;
+            this.comboSelClient1.FormattingEnabled = true;
+            this.comboSelClient1.Location = new System.Drawing.Point(133, 30);
+            this.comboSelClient1.Name = "comboSelClient1";
+            this.comboSelClient1.Size = new System.Drawing.Size(233, 21);
+            this.comboSelClient1.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(16, 65);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(111, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
+            this.label2.Text = "Nombre de personnes";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 30);
+            this.label1.Location = new System.Drawing.Point(16, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(94, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(428, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "label3";
+            this.label1.Text = "Sélectionner client";
             // 
             // FormPanelAdmin
             // 
@@ -379,8 +564,12 @@
             this.tabBox.ResumeLayout(false);
             this.tabAjoutReservations.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.grpGrgrgr.ResumeLayout(false);
-            this.grpGrgrgr.PerformLayout();
+            this.grpReservation3.ResumeLayout(false);
+            this.grpReservation3.PerformLayout();
+            this.grpReservation2.ResumeLayout(false);
+            this.grpReservation2.PerformLayout();
+            this.grpReservation1.ResumeLayout(false);
+            this.grpReservation1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -393,7 +582,7 @@
         private System.Windows.Forms.Button buttonVignette;
         private System.Windows.Forms.Button buttonPhoto;
         private System.Windows.Forms.CheckBox checkboxPromotion;
-        private System.Windows.Forms.Button btnAjouter;
+        private System.Windows.Forms.Button buttonValider;
         private System.Windows.Forms.Label lblNbJours;
         private System.Windows.Forms.Label lblPrix;
         private System.Windows.Forms.TextBox textPrix;
@@ -411,12 +600,29 @@
         private System.Windows.Forms.TabControl tabBox;
         private System.Windows.Forms.TabPage tabAjoutReservations;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.GroupBox grpGrgrgr;
+        private System.Windows.Forms.GroupBox grpReservation1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textboxNbPers1;
+        private System.Windows.Forms.ComboBox comboSelClient1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox grpReservation3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.TextBox textboxNbPers3;
+        private System.Windows.Forms.ComboBox comboSelClient3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox grpReservation2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.TextBox textboxNbPers2;
+        private System.Windows.Forms.ComboBox comboSelClient2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button buttonRecap;
+        private System.Windows.Forms.Button buttonValiderTransaction;
+        private System.Windows.Forms.Button button1;
     }
 }

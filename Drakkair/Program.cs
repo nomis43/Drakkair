@@ -17,7 +17,7 @@ namespace Drakkair
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FormMain());
-            Application.Run(new FormPanelAdmin(true));
+            Application.Run(new FormPanelAdmin());
         }
     }
 }
