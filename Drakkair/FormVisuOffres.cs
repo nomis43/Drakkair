@@ -17,22 +17,12 @@ namespace Drakkair
         
         DataSet ds = new DataSet();
 
-        BindingNavigator customersBindingNavigator = new BindingNavigator(true);
-
-        BindingSource customersBindingSource = new BindingSource();
-        TextBox companyNameTextBox = new TextBox();
-
+        BindingSource bindingsource = new BindingSource();
         public FormVisuOffres()
         {
+           // this.co = co;
             InitializeComponent();
-
-            this.customersBindingNavigator.BindingSource = customersBindingSource;
-            this.customersBindingNavigator.Dock = DockStyle.Bottom;
-            this.Controls.Add(customersBindingNavigator);
-
-
-            this.companyNameTextBox.Dock = DockStyle.Bottom;
-            this.Controls.Add(this.companyNameTextBox);
+ 
         }
 
         private void FormVisuOffres_Load(object sender, EventArgs e)
@@ -49,19 +39,57 @@ namespace Drakkair
            ds.Tables.Add("offres");
            da.Fill(ds.Tables["offres"]);
 
-          // companyNameTextBox.DataBindings.Add(new Binding("Text", ds, "offres.Code"));
+          
 
+           bindingsource.DataSource = ds.Tables["offres"];
 
-           this.customersBindingSource.DataSource = ds.Tables["offres"];
+           bindingNavigator1.BindingSource = bindingsource;
 
+         
 
-           dataGridView1.DataSource = ds.Tables["offres"];
+            textBoxCode.DataBindings.Add(new Binding("Text", bindingsource, "Code"));
+            textBoxDescription.DataBindings.Add(new Binding("Text", bindingsource, "Description"));
+            textBoxdestination.DataBindings.Add(new Binding("Text", bindingsource, "Destination"));
+            textBoxHebergement.DataBindings.Add(new Binding("Text", bindingsource, "Hebergement"));
+            textBoxPrix.DataBindings.Add(new Binding("Text", bindingsource, "Prix"));
+            textBoxJours.DataBindings.Add(new Binding("Text", bindingsource, "Duree"));
+            textBoxThematique.DataBindings.Add(new Binding("Text", bindingsource, "Thematique"));
+            checkBoxPromo.DataBindings.Add(new Binding("Checked", bindingsource, "Promotion"));
 
+            DisplayPosition();
+            
 
+        }
 
+        private void btn_first_Click(object sender, EventArgs e)
+        {
+            bindingsource.MoveFirst();
+            DisplayPosition();
+        }
 
-           companyNameTextBox.DataBindings.Add(new Binding("Text", this.customersBindingSource, "Code", true));
+        private void btn_prev_Click(object sender, EventArgs e)
+        {
+       
+            bindingsource.MovePrevious();
+            DisplayPosition();
+        }
 
+        private void btn_next_Click(object sender, EventArgs e)
+        {
+            
+            bindingsource.MoveNext();
+            DisplayPosition();
+        }
+
+        private void btn_last_Click(object sender, EventArgs e)
+        {
+            bindingsource.MoveLast();
+            DisplayPosition();
+           
+        }
+        private void DisplayPosition()
+        {
+            lbl_pos.Text = this.bindingsource.Position.ToString()+"/"+bindingsource.Count;
         }
     }
 }

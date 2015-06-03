@@ -34,7 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lbl_pos = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -43,26 +43,24 @@
             this.textBoxPrix = new System.Windows.Forms.TextBox();
             this.textBoxHebergement = new System.Windows.Forms.TextBox();
             this.textBoxThematique = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBoxJours = new System.Windows.Forms.TextBox();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.textBoxdestination = new System.Windows.Forms.TextBox();
             this.checkBoxPromo = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btn_first = new System.Windows.Forms.Button();
+            this.btn_prev = new System.Windows.Forms.Button();
+            this.btn_next = new System.Windows.Forms.Button();
+            this.btn_last = new System.Windows.Forms.Button();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.SuspendLayout();
@@ -103,14 +101,14 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Destination";
             // 
-            // label5
+            // lbl_pos
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(240, 414);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "label5";
+            this.lbl_pos.AutoSize = true;
+            this.lbl_pos.Location = new System.Drawing.Point(240, 414);
+            this.lbl_pos.Name = "lbl_pos";
+            this.lbl_pos.Size = new System.Drawing.Size(35, 13);
+            this.lbl_pos.TabIndex = 4;
+            this.lbl_pos.Text = "label5";
             // 
             // label6
             // 
@@ -176,12 +174,12 @@
             this.textBoxThematique.Size = new System.Drawing.Size(100, 20);
             this.textBoxThematique.TabIndex = 12;
             // 
-            // textBox5
+            // textBoxJours
             // 
-            this.textBox5.Location = new System.Drawing.Point(122, 259);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 13;
+            this.textBoxJours.Location = new System.Drawing.Point(122, 259);
+            this.textBoxJours.Name = "textBoxJours";
+            this.textBoxJours.Size = new System.Drawing.Size(100, 20);
+            this.textBoxJours.TabIndex = 13;
             // 
             // textBoxDescription
             // 
@@ -207,49 +205,45 @@
             this.checkBoxPromo.TabIndex = 16;
             this.checkBoxPromo.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btn_first
             // 
-            this.button1.Location = new System.Drawing.Point(140, 444);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(42, 39);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "<<";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_first.Location = new System.Drawing.Point(140, 444);
+            this.btn_first.Name = "btn_first";
+            this.btn_first.Size = new System.Drawing.Size(42, 39);
+            this.btn_first.TabIndex = 17;
+            this.btn_first.Text = "<<";
+            this.btn_first.UseVisualStyleBackColor = true;
+            this.btn_first.Click += new System.EventHandler(this.btn_first_Click);
             // 
-            // button2
+            // btn_prev
             // 
-            this.button2.Location = new System.Drawing.Point(201, 444);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(42, 39);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "<";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_prev.Location = new System.Drawing.Point(201, 444);
+            this.btn_prev.Name = "btn_prev";
+            this.btn_prev.Size = new System.Drawing.Size(42, 39);
+            this.btn_prev.TabIndex = 18;
+            this.btn_prev.Text = "<";
+            this.btn_prev.UseVisualStyleBackColor = true;
+            this.btn_prev.Click += new System.EventHandler(this.btn_prev_Click);
             // 
-            // button3
+            // btn_next
             // 
-            this.button3.Location = new System.Drawing.Point(266, 444);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(42, 39);
-            this.button3.TabIndex = 19;
-            this.button3.Text = ">";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_next.Location = new System.Drawing.Point(266, 444);
+            this.btn_next.Name = "btn_next";
+            this.btn_next.Size = new System.Drawing.Size(42, 39);
+            this.btn_next.TabIndex = 19;
+            this.btn_next.Text = ">";
+            this.btn_next.UseVisualStyleBackColor = true;
+            this.btn_next.Click += new System.EventHandler(this.btn_next_Click);
             // 
-            // button4
+            // btn_last
             // 
-            this.button4.Location = new System.Drawing.Point(333, 444);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(42, 39);
-            this.button4.TabIndex = 20;
-            this.button4.Text = ">>";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(690, 198);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(341, 260);
-            this.dataGridView1.TabIndex = 21;
+            this.btn_last.Location = new System.Drawing.Point(333, 444);
+            this.btn_last.Name = "btn_last";
+            this.btn_last.Size = new System.Drawing.Size(42, 39);
+            this.btn_last.TabIndex = 20;
+            this.btn_last.Text = ">>";
+            this.btn_last.UseVisualStyleBackColor = true;
+            this.btn_last.Click += new System.EventHandler(this.btn_last_Click);
             // 
             // bindingNavigator1
             // 
@@ -274,9 +268,16 @@
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(1356, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(561, 25);
             this.bindingNavigator1.TabIndex = 22;
             this.bindingNavigator1.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 22);
+            this.bindingNavigatorCountItem.Text = "de {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -310,16 +311,9 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -342,24 +336,23 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // FormVisuOffres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1356, 524);
+            this.ClientSize = new System.Drawing.Size(561, 524);
             this.Controls.Add(this.bindingNavigator1);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_last);
+            this.Controls.Add(this.btn_next);
+            this.Controls.Add(this.btn_prev);
+            this.Controls.Add(this.btn_first);
             this.Controls.Add(this.checkBoxPromo);
             this.Controls.Add(this.textBoxdestination);
             this.Controls.Add(this.textBoxDescription);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBoxJours);
             this.Controls.Add(this.textBoxThematique);
             this.Controls.Add(this.textBoxHebergement);
             this.Controls.Add(this.textBoxPrix);
@@ -368,7 +361,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lbl_pos);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -376,7 +369,6 @@
             this.Name = "FormVisuOffres";
             this.Text = "FormVisuOffres";
             this.Load += new System.EventHandler(this.FormVisuOffres_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
@@ -391,7 +383,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbl_pos;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
@@ -400,15 +392,14 @@
         private System.Windows.Forms.TextBox textBoxPrix;
         private System.Windows.Forms.TextBox textBoxHebergement;
         private System.Windows.Forms.TextBox textBoxThematique;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBoxJours;
         private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.TextBox textBoxdestination;
         private System.Windows.Forms.CheckBox checkBoxPromo;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btn_first;
+        private System.Windows.Forms.Button btn_prev;
+        private System.Windows.Forms.Button btn_next;
+        private System.Windows.Forms.Button btn_last;
         private System.Windows.Forms.BindingNavigator bindingNavigator1;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
