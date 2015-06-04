@@ -305,12 +305,12 @@ namespace Drakkair
 		/// <exception cref="IndexOutOfRangeException">Emise automatiquement si le tableau n'a pas les bonnes dimensions.</exception>
 		private void AddRowToTable(string tableName, object[,] config)
 		{
-			var r = DATA.Tables[tableName].NewRow();
+			var row = DATA.Tables[tableName].NewRow();
 
 			for(int i = 0, c = config.GetLength(0); i < c; i++)
-				r[(string)config[i, 0]] = config[i, 1];
+				row[(string)config[i, 0]] = config[i, 1];
 
-			DATA.Tables[tableName].Rows.Add(r);
+			DATA.Tables[tableName].Rows.Add(row);
 		}
 		// ----------------------------------------------------------------
 
@@ -414,7 +414,7 @@ namespace Drakkair
 		/// </summary>
 		private void buttonDetailsOffres_Click(object sender, EventArgs e)
 		{
-
+			
 		}
 		// ----------------------------------------------------------------
 
@@ -435,15 +435,6 @@ namespace Drakkair
 			this.Hide();
 			new FormHotels(DB).ShowDialog();
 			this.Show();
-		}
-		// ----------------------------------------------------------------
-
-		/// <summary>
-		/// Appel du formulaire d'appréciation des hôtels.
-		/// </summary>
-		private void buttonHotels_Click(object sender, EventArgs e)
-		{
-
 		}
 		// ----------------------------------------------------------------
 	}

@@ -52,12 +52,12 @@ namespace Drakkair
 		/// <exception cref="IndexOutOfRangeException">Emise automatiquement si le tableau n'a pas les bonnes dimensions.</exception>
 		private void AddRowToTable(string tableName, object[,] config)
 		{
-			var r = DATA.Tables[tableName].NewRow();
+			var row = DATA.Tables[tableName].NewRow();
 
 			for(int i = 0, c = config.GetLength(0); i < c; i++)
-				r[(string)config[i, 0]] = config[i, 1];
+				row[(string)config[i, 0]] = config[i, 1];
 
-			DATA.Tables[tableName].Rows.Add(r);
+			DATA.Tables[tableName].Rows.Add(row);
 		}
 		// ----------------------------------------------------------------
 
@@ -142,6 +142,23 @@ namespace Drakkair
 		{
 			RetrieveData();
 
+			// liaison dataGridListHotels - Table "Hotels"
+			dataGridListHotels.DataSource = DATA.Tables["Hotels"];
+
+			dataGridListHotels.Columns["code"].HeaderText      = "CODE";
+			dataGridListHotels.Columns["nom"].HeaderText       = "HOTEL";
+			dataGridListHotels.Columns["adresse"].HeaderText   = "ADRESSE";
+			dataGridListHotels.Columns["telephone"].HeaderText = "TELEPHONE";
+			dataGridListHotels.Columns["etoiles"].HeaderText   = "ETOILES";
+
+			dataGridListHotels.AutoSize = true;
+			dataGridListHotels.Columns["code"].Frozen = true;
+
+			// liaison - Table apréciation
+			dataGridAppreciationsHotel.DataSource = new DataView(DATA.Tables["Appreciations"]){
+				RowFilter = ""
+			};
+
 			// ajout de quelques hotels
 			AddRowToTable("Hotels", new object[,]{
 				{"code",      2014},
@@ -162,7 +179,7 @@ namespace Drakkair
 			AddRowToTable("Hotels", new object[,]{
 				{"code",      2016},
 				{"nom",       "Chambre d'hôte le Père Noël"},
-				{"adresse",   "7 boulevar du Cadeau, Laponie"},
+				{"adresse",   "7 boulevard du Cadeau, Laponie"},
 				{"telephone", "8 12 12 12 12 12 12 12 12 ..."},
 				{"etoiles",   2}
 			});
@@ -182,6 +199,65 @@ namespace Drakkair
 				{"telephone", "06 78 99 30 12"},
 				{"etoiles",   2}
 			});
+		}
+		// ----------------------------------------------------------------
+		
+		/// <summary>
+		/// Met à jour la liste des appréciation en fonction de l'hôtel choisi.
+		/// </summary>
+		private void comboAppreciationHotel_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+		// ----------------------------------------------------------------
+		
+		/// <summary>
+		/// Ajoute une nouvelle appréciation sur un hôtel.
+		/// </summary>
+		private void buttonValiderAppreciation_Click(object sender, EventArgs e)
+		{
+			AddRowToTable("Appreciations", new object[,]{
+				{"auteur_nom",    textNom.Text},
+				{"auteur_prenom", textPrenom.Text},
+				{"hotel_code",    textCode.Text},
+				{"titre",         textTitre.Text},
+				{"commentaire",   textCommentaire.Text},
+				{"note",          trackNote.Value},
+				{"date",          DateTime.Now}
+			});
+		}
+		// ----------------------------------------------------------------
+
+		/// <summary>
+		/// Insert un hôtel dans la table des hotels.
+		/// </summary>
+		private void buttonValiderHotel_Click(object sender, EventArgs e)
+		{
+			AddRowToTable("Hotels", new object[,]{
+				{"code",      int.Parse(textCode.Text)},
+				{"nom",       textNomHotel.Text},
+				{"adresse",   textAdresse.Text},
+				{"telephone", textTelephone.Text},
+				{"etoiles",   trackEtoiles.Value}
+			});
+		}
+		// ----------------------------------------------------------------
+
+		/// <summary>
+		/// Met à jour le pitite label à côté du slider.
+		/// </summary>
+		private void trackEtoiles_Scroll(object sender, EventArgs e)
+		{
+			labelEtoiles.Text = "" + trackEtoiles.Value;
+		}
+		// ----------------------------------------------------------------
+
+		/// <summary>
+		/// Met à jour le pitite label à côté du slider.
+		/// </summary>
+		private void trackNote_Scroll(object sender, EventArgs e)
+		{
+			labelNote.Text = "" + trackNote.Value;
 		}
 		// ----------------------------------------------------------------
 	}
