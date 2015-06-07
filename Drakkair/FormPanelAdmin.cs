@@ -14,7 +14,7 @@ namespace Drakkair
     public partial class FormPanelAdmin : Form
     {
         DataSet ds = new DataSet();   // DataSet global utilisé pour stocker les résultats de requetes sur ce form
-        OleDbConnection co = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=E:\Documents\IUT\modules\A21\A21_Projet\Drakkair\Drakkair.mdb");
+        OleDbConnection co = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=..\..\..\Drakkair.mdb");
 
         List<string> listeTransaction = new List<string>();
 
@@ -215,12 +215,7 @@ FROM ((tblVoyages INNER JOIN tblHebergement ON tblVoyages.TypeHebergement = tblH
                 transaction.Rollback();
                 MessageBox.Show("ERREUR: Impossible d'effectuer la transaction!\n"+ex.Message);
             } 
-            co.Close(); 
-             
-            /*co.Open();
-            new OleDbCommand("INSERT INTO tblVoyage VALUES (NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)", co).ExecuteNonQuery();
-            co.Close();*/
-            
+            co.Close();
         }
 
         private void resetTabVoyage()
@@ -296,6 +291,51 @@ FROM ((tblVoyages INNER JOIN tblHebergement ON tblVoyages.TypeHebergement = tblH
             {
                 MessageBox.Show("ERREUR: Suppression echouée!");
             }
+        }
+
+        private void buttonModifier_Click(object sender, EventArgs e)
+        {
+            string req = "UPDATE tblVoyages SET Destination = '" + this.textModDest.Text + "',"
+                                             + "Duree = " + this.textModDuree.Text + ","
+                                             + "TypeThematique = " + this.comboModThemq.SelectedValue + ","
+                                             + "Description = '" + this.textModDescr.Text.Replace("'", " ") + "',"
+                                             + "Prix = " + this.textModPrix.Text + ","
+                                             + "Promotion = " + this.checkboxModPromo.Checked.ToString() + ","
+                                             + "TypeHebergement = '" + this.comboModHebergt.SelectedValue + "'";
+
+            string finReq = " WHERE CodeVoyage='" + this.comboModCode.Text + "'";
+            req += finReq;
+
+            OleDbCommand cmd = new OleDbCommand(req, this.co);
+            /*
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.Connection = this.co;
+            cmd.CommandText = "UPDATE tblVoyages SET Destination = @Dst, Duree = @Duree, " 
+                            + "TypeThematique = @Thq, Description = @Descr, Prix = @Prix, " 
+                            + "Promotion = @Promo, TypeHebergement = @Hebergt WHERE CodeVoyage = @ID";
+
+            
+            cmd.Parameters.Add("@ID", this.comboModCode.Text.ToString());
+            cmd.Parameters.Add("@Dst", this.textModDest.Text.ToString());
+            cmd.Parameters.Add("@Duree", Convert.ToInt32(this.textModDuree.Text.ToString()));
+            cmd.Parameters.Add("@Thq", this.comboModThemq.SelectedValue);
+            cmd.Parameters.Add("@Descr", this.textModDescr.ToString());
+            cmd.Parameters.Add("@Prix", Convert.ToInt32(this.textModPrix.Text.ToString()));
+            cmd.Parameters.Add("@Promo", this.checkboxModPromo.Checked);
+            cmd.Parameters.Add("@Hebergt", this.comboModHebergt.SelectedValue.ToString()); 
+             */
+            try
+            {
+                this.co.Open();
+                MessageBox.Show(req);
+                cmd.ExecuteNonQuery();
+                this.co.Close();
+            }
+            catch (OleDbException)
+            {
+                MessageBox.Show("ERREUR: Modification impossible!");
+            }
+            
         }
     }
 }
