@@ -398,13 +398,6 @@ namespace Drakkair
 			if(int.TryParse(textPrixMax.Text, out max))
 				where.Add("[Tarif en €] <= " + max);
 
-			MessageBox.Show(
-				"DEPART  : " + comboDepart.SelectedValue.GetType().ToString() + " / " + comboDepart.SelectedValue.Equals(-1)
-				+ "\nTHEME   : " + comboTheme.SelectedValue.GetType().ToString() + " / " + comboTheme.SelectedValue.Equals(-1)
-				+ "\nPENSION : " + comboPension.SelectedValue.GetType().ToString() + " / " + comboPension.SelectedValue.Equals(-1)
-				+ "\n" + string.Join(" AND ", where)
-			);
-
 			GridDataLink(dataGridView, "Voyages", string.Join(" AND ", where));
 		}
 		// ----------------------------------------------------------------

@@ -121,43 +121,11 @@ namespace Drakkair
 		// ----------------------------------------------------------------
 
 		/// <summary>
-		/// Fait une liaison de données sur un data grid view avec une table de this.DATA.
-		/// Sélectionne les lignes à afficher avec une clause SQL.
-		/// </summary>
-		/// <param name="grid">Le data grid viewà lier.</param>
-		/// <param name="tableName">Le nom de la table dans laquelle aller chercher les données.</param>
-		/// <param name="where">La condition pour la sélection des lignes à afficher.</param>
-		private void GridDataLink(DataGridView grid, string tableName, string where)
-		{
-			grid.DataSource = new DataView(DATA.Tables[tableName]) {
-				RowFilter = where
-			};
-		}
-		// ----------------------------------------------------------------
-
-		/// <summary>
 		/// Initialise une liste d'hôtels.
 		/// </summary>
 		private void FormHotels_Load(object sender, EventArgs e)
 		{
 			RetrieveData();
-
-			// liaison dataGridListHotels - Table "Hotels"
-			dataGridListHotels.DataSource = DATA.Tables["Hotels"];
-
-			dataGridListHotels.Columns["code"].HeaderText      = "CODE";
-			dataGridListHotels.Columns["nom"].HeaderText       = "HOTEL";
-			dataGridListHotels.Columns["adresse"].HeaderText   = "ADRESSE";
-			dataGridListHotels.Columns["telephone"].HeaderText = "TELEPHONE";
-			dataGridListHotels.Columns["etoiles"].HeaderText   = "ETOILES";
-
-			dataGridListHotels.AutoSize = true;
-			dataGridListHotels.Columns["code"].Frozen = true;
-
-			// liaison - Table apréciation
-			dataGridAppreciationsHotel.DataSource = new DataView(DATA.Tables["Appreciations"]){
-				RowFilter = ""
-			};
 
 			// ajout de quelques hotels
 			AddRowToTable("Hotels", new object[,]{
@@ -199,6 +167,27 @@ namespace Drakkair
 				{"telephone", "06 78 99 30 12"},
 				{"etoiles",   2}
 			});
+
+			// liaison dataGridListHotels - Table "Hotels"
+			dataGridListHotels.DataSource = DATA.Tables["Hotels"];
+
+			dataGridListHotels.Columns["code"].HeaderText      = "CODE";
+			dataGridListHotels.Columns["nom"].HeaderText       = "HOTEL";
+			dataGridListHotels.Columns["adresse"].HeaderText   = "ADRESSE";
+			dataGridListHotels.Columns["telephone"].HeaderText = "TELEPHONE";
+			dataGridListHotels.Columns["etoiles"].HeaderText   = "ETOILES";
+
+			dataGridListHotels.AutoSize = true;
+			dataGridListHotels.Columns["code"].Frozen = true;
+
+			// liaison dataGridAppreciationsHotel - Table "Appreciations"
+			dataGridAppreciationsHotel.DataSource = new DataView(DATA.Tables["Appreciations"]);
+
+			// liaison comboAppreciationHotel - Table "Hotels"
+			ComboDataLink(comboAppreciationHotel, "Hotels", "code", "nom");
+
+			// liaison comboChoixHotel - Table "Hotels"
+			ComboDataLink(comboChoixHotel, "Hotels", "code", "nom");
 		}
 		// ----------------------------------------------------------------
 		
@@ -207,7 +196,9 @@ namespace Drakkair
 		/// </summary>
 		private void comboAppreciationHotel_SelectedIndexChanged(object sender, EventArgs e)
 		{
-
+			dataGridAppreciationsHotel.DataSource = new DataView(DATA.Tables["Appreciations"]) {
+				RowFilter = "hotel_code = " + (int)comboAppreciationHotel.SelectedValue
+			};
 		}
 		// ----------------------------------------------------------------
 		
@@ -219,7 +210,7 @@ namespace Drakkair
 			AddRowToTable("Appreciations", new object[,]{
 				{"auteur_nom",    textNom.Text},
 				{"auteur_prenom", textPrenom.Text},
-				{"hotel_code",    textCode.Text},
+				{"hotel_code",    (int)comboAppreciationHotel.SelectedValue},
 				{"titre",         textTitre.Text},
 				{"commentaire",   textCommentaire.Text},
 				{"note",          trackNote.Value},
