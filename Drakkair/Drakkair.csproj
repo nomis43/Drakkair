@@ -71,6 +71,12 @@
     <Compile Include="FormPanelAdmin.Designer.cs">
       <DependentUpon>FormPanelAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRecapTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRecapTransaction.designer.cs">
+      <DependentUpon>FormRecapTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormMain.resx">

@@ -23,6 +23,11 @@ namespace Drakkair
             InitializeComponent();
         }
 
+        public FormPanelAdmin(OleDbConnection co) : this()
+        {
+            this.co = co;
+        }
+
         private void FormAjoutVoyage_Load(object sender, EventArgs e)
         {
             this.ChargerCombos();
@@ -57,8 +62,9 @@ namespace Drakkair
             string reqHebergt = @"SELECT * FROM tblHebergement";
             string reqThematique = @"SELECT * FROM tblThematique";
             string reqClients = @"SELECT NumClient, NomClient+' '+Prenom AS Nom FROM tblClients";
-            string reqModifier = @"SELECT tblVoyages.*, tblHebergement.*, tblThematique.*
-FROM ((tblVoyages INNER JOIN tblHebergement ON tblVoyages.TypeHebergement = tblHebergement.NumCategorie) INNER JOIN tblThematique ON tblVoyages.TypeThematique = tblThematique.codeThem)";
+            /*string reqModifier = @"SELECT tblVoyages.*, tblHebergement.*, tblThematique.*
+FROM ((tblVoyages INNER JOIN tblHebergement ON tblVoyages.TypeHebergement = tblHebergement.NumCategorie) INNER JOIN tblThematique ON tblVoyages.TypeThematique = tblThematique.codeThem)";*/
+            string reqModifier = "SELECT * FROM tblVoyages";
 
             ChargerBDD(reqHebergt, "Hebergement");
             ChargerBDD(reqThematique, "Thematique");
@@ -108,20 +114,16 @@ FROM ((tblVoyages INNER JOIN tblHebergement ON tblVoyages.TypeHebergement = tblH
             }
         }
 
+        /// <summary>
+        /// Execute la requête permettant d'ajouter un voyage, et remet les contrôles à 0
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             try
             {
-                string code = (string)textCode.Text;
-                string destination = (string)textDest.Text;
-                string description = (string)textDescr.Text;
-                int thematique = (int)comboThematique.SelectedValue;
-                int hebergement = (int)comboHebergement.SelectedValue;
-                int nbJours = Convert.ToInt32(textNbJours.Text);
-                int prix = Convert.ToInt32(textPrix.Text);
-                string req = "INSERT INTO tblVoyages (CodeVoyage, Destination, Duree, TypeThematique, Description, Prix, TypeHebergement) VALUES ('" + code + "','" + destination + "'," + nbJours + "," + thematique + ",'" + description + "'," + prix + ",'" +hebergement+"')";
-
-                listeTransaction.Add(req);
+                this.construireReqVoyage();
                 this.activerTabReservation();
                 this.buttonValider.Enabled = false;
                 this.tabBox.SelectedIndex = 1;
@@ -132,6 +134,21 @@ FROM ((tblVoyages INNER JOIN tblHebergement ON tblVoyages.TypeHebergement = tblH
             }
         }
 
+        /// <summary>
+        /// Construit une requête permettant d'ajouter un voyage à partir des valeurs entrées dans l'onglet Ajout voyage
+        /// </summary>
+        private void construireReqVoyage()
+        {
+            string code = (string)textCode.Text;
+            string destination = (string)textDest.Text;
+            string description = (string)textDescr.Text;
+            int thematique = (int)comboThematique.SelectedValue;
+            int hebergement = (int)comboHebergement.SelectedValue;
+            int nbJours = Convert.ToInt32(textNbJours.Text);
+            int prix = Convert.ToInt32(textPrix.Text);
+            string req = "INSERT INTO tblVoyages (CodeVoyage, Destination, Duree, TypeThematique, Description, Prix, TypeHebergement) VALUES ('" + code + "','" + destination + "'," + nbJours + "," + thematique + ",'" + description + "'," + prix + ",'" +hebergement+"')";
+            listeTransaction.Add(req);
+        }
         private void buttonPhoto_Click(object sender, EventArgs e)
         {
             labelPhoto.Text = SelectFichier();
@@ -155,16 +172,43 @@ FROM ((tblVoyages INNER JOIN tblHebergement ON tblVoyages.TypeHebergement = tblH
             return ofd.FileName;
         }
 
+        /// <summary>
+        /// Affiche un récapitulatif de la transaction avant validation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonRecap_Click(object sender, EventArgs e)
         {
-            string str = "";
-            foreach (string req in listeTransaction)
-            {
-                str += req + "\n";
-            }
-            MessageBox.Show(str);
+            Dictionary<string, string> recap = new Dictionary<string, string>();
+            recap.Add("code", this.textCode.Text);
+            recap.Add("dest", this.textDest.Text);
+            recap.Add("prix", this.textPrix.Text);
+            recap.Add("duree", this.textNbJours.Text);
+            recap.Add("descr", this.textDescr.Text);
+            recap.Add("themq", this.comboThematique.Text);
+            recap.Add("hebergt", this.comboHebergement.Text);
+
+            recap.Add("grp1Nom", this.comboSelClient1.Text);
+            recap.Add("grp2Nom", this.comboSelClient2.Text);
+            recap.Add("grp3Nom", this.comboSelClient3.Text);
+
+            recap.Add("grp1nb", this.textboxNbPers1.Text);
+            recap.Add("grp2nb", this.textboxNbPers2.Text);
+            recap.Add("grp3nb", this.textboxNbPers3.Text);
+
+            recap.Add("grp1date", this.dateTimePicker1.Value.ToString("dd/MM/yyyy"));
+            recap.Add("grp2date", this.dateTimePicker2.Value.ToString("dd/MM/yyyy"));
+            recap.Add("grp3date", this.dateTimePicker3.Value.ToString("dd/MM/yyyy"));
+
+            new FormRecapTransaction(recap).Show();
         }
 
+        /// <summary>
+        /// Construit une requête permettant d'insérer une transaction à partir des valeurs passées en paramètre
+        /// </summary>
+        /// <param name="clientId"></param>
+        /// <param name="nbPers"></param>
+        /// <param name="date"></param>
         private void construireReqReservation(ComboBox clientId, TextBox nbPers, DateTime date)
         {
             string req;
@@ -183,6 +227,11 @@ FROM ((tblVoyages INNER JOIN tblHebergement ON tblVoyages.TypeHebergement = tblH
             catch (NullReferenceException) { };
         }
 
+        /// <summary>
+        /// Fonction qui permet d'effectuer une transaction
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonValiderTransaction_Click(object sender, EventArgs e)
         {
             
@@ -192,32 +241,44 @@ FROM ((tblVoyages INNER JOIN tblHebergement ON tblVoyages.TypeHebergement = tblH
             construireReqReservation(comboSelClient2, textboxNbPers2, dateTimePicker2.Value);
             construireReqReservation(comboSelClient3, textboxNbPers3, dateTimePicker3.Value);
 
-            MessageBox.Show(listeTransaction[0]);
-            co.Open();
-            transaction = co.BeginTransaction();
-
-            try
+            DialogResult confirmation = MessageBox.Show("Etes-vous certain de vouloir ajouter ce voyage et ces réservations?","Comfirmez", MessageBoxButtons.YesNo);
+            if (confirmation == DialogResult.Yes)
             {
-                if (listeTransaction.Count > 1)
+                co.Open();
+                transaction = co.BeginTransaction();
+
+                try
                 {
+                    if (listeTransaction.Count > 1)
+                    {
+                        foreach (string req in listeTransaction)
+                        {
+                            new OleDbCommand(req, co, transaction).ExecuteNonQuery();
+                        }
+                    }
+                    transaction.Commit();
+                    listeTransaction.Clear();
+                    this.tabAjoutVoyage.Select();
+                    this.resetTabVoyage();
+                    this.Close();
+                }
+                catch (OleDbException ex)
+                {
+                    transaction.Rollback();
+                    listeTransaction.Clear();
+                    MessageBox.Show("ERREUR: Impossible d'effectuer la transaction!\n" + ex.Message);
                     foreach (string req in listeTransaction)
                     {
-                        new OleDbCommand(req, co, transaction).ExecuteNonQuery();
+                        MessageBox.Show(req);
                     }
                 }
-                transaction.Commit();
-                listeTransaction.Clear();
-                this.tabAjoutVoyage.Select();
-                this.resetTabVoyage();
+                co.Close();
             }
-            catch (OleDbException ex)
-            {
-                transaction.Rollback();
-                MessageBox.Show("ERREUR: Impossible d'effectuer la transaction!\n"+ex.Message);
-            } 
-            co.Close();
         }
 
+        /// <summary>
+        /// Permet une remise à zero des onglets réservation et ajout voyage après une transaction
+        /// </summary>
         private void resetTabVoyage()
         {
             resetControls(this.tabAjoutVoyage.Controls);
@@ -236,6 +297,10 @@ FROM ((tblVoyages INNER JOIN tblHebergement ON tblVoyages.TypeHebergement = tblH
             this.grpReservation3.Enabled = false;
         }
 
+        /// <summary>
+        /// Supprime le texte de tous les contrôles passés en paramètre 
+        /// </summary>
+        /// <param name="listControls"></param>
         private void resetControls(Control.ControlCollection listControls)
         {
             foreach (Control c in listControls)
@@ -248,6 +313,9 @@ FROM ((tblVoyages INNER JOIN tblHebergement ON tblVoyages.TypeHebergement = tblH
 
         }
 
+        /// <summary>
+        /// Active l'onglet réservation
+        /// </summary>
         private void activerTabReservation()
         {
             buttonValiderTransaction.Enabled = true;
@@ -259,6 +327,11 @@ FROM ((tblVoyages INNER JOIN tblHebergement ON tblVoyages.TypeHebergement = tblH
             grpReservation3.Enabled = true;
         }
 
+        /// <summary>
+        /// Procédure chargant tous les contrôles de l'onglet modifier à chaque changement de la combobox ID 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboModCode_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.comboModThemq.SelectedValue = Convert.ToInt32(ds.Tables["Voyages"].Rows[this.comboModCode.SelectedIndex][3].ToString());
@@ -271,71 +344,73 @@ FROM ((tblVoyages INNER JOIN tblHebergement ON tblVoyages.TypeHebergement = tblH
             this.checkboxModPromo.Checked = Convert.ToBoolean(ds.Tables["Voyages"].Rows[this.comboModCode.SelectedIndex][6].ToString());
         }
 
-
+        /// <summary>
+        /// S'exécute après un clic sur le bouton supprimer une offre
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSupprimer_Click(object sender, EventArgs e)
         {
-            string req1 = "DELETE * FROM tblReservations WHERE CodeVoyage = '" + this.comboModCode.Text + "'";
-            string req2 = "DELETE * FROM tblVoyages WHERE CodeVoyage = '" + this.comboModCode.Text + "'";
-            OleDbCommand cmd = new OleDbCommand(req1, co);
-            MessageBox.Show(req1 + "\n" + req2);
-            try
-            {
-                co.Open();
-                cmd.ExecuteNonQuery();
-                cmd.CommandText = req2;
-                cmd.ExecuteScalar();
-                co.Close();
-                ds.Tables["Voyages"].Rows[comboModCode.SelectedIndex].Delete();
-            }
-            catch (OleDbException)
-            {
-                MessageBox.Show("ERREUR: Suppression echouée!");
-            }
+             DialogResult confirmation = MessageBox.Show("Etes-vous certain de vouloir supprimer ce voyage? ","Comfirmez", MessageBoxButtons.YesNo);
+             if (confirmation == DialogResult.Yes)
+             {
+                 string req1 = "DELETE * FROM tblReservations WHERE CodeVoyage = '" + this.comboModCode.Text + "'";
+                 string req2 = "DELETE * FROM tblVoyages WHERE CodeVoyage = '" + this.comboModCode.Text + "'";
+                 OleDbCommand cmd = new OleDbCommand(req1, co);
+                 // MessageBox.Show(req1 + "\n" + req2);
+                 try
+                 {
+                     co.Open();
+                     cmd.ExecuteNonQuery();
+                     cmd.CommandText = req2;
+                     cmd.ExecuteScalar();
+                     co.Close();
+                     ds.Tables["Voyages"].Rows[comboModCode.SelectedIndex].Delete();
+                 }
+                 catch (OleDbException)
+                 {
+                     MessageBox.Show("ERREUR: Suppression echouée!");
+                 }
+             }
         }
 
+        /// <summary>
+        /// evenement permettant de supprimer une offre sélectionnée dans l'interface
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonModifier_Click(object sender, EventArgs e)
         {
-            string req = "UPDATE tblVoyages SET Destination = '" + this.textModDest.Text + "',"
-                                             + "Duree = " + this.textModDuree.Text + ","
-                                             + "TypeThematique = " + this.comboModThemq.SelectedValue + ","
-                                             + "Description = '" + this.textModDescr.Text.Replace("'", " ") + "',"
-                                             + "Prix = " + this.textModPrix.Text + ","
-                                             + "Promotion = " + this.checkboxModPromo.Checked.ToString() + ","
-                                             + "TypeHebergement = '" + this.comboModHebergt.SelectedValue + "'";
-
-            string finReq = " WHERE CodeVoyage='" + this.comboModCode.Text + "'";
-            req += finReq;
-
-            OleDbCommand cmd = new OleDbCommand(req, this.co);
-            /*
-            OleDbCommand cmd = new OleDbCommand();
-            cmd.Connection = this.co;
-            cmd.CommandText = "UPDATE tblVoyages SET Destination = @Dst, Duree = @Duree, " 
-                            + "TypeThematique = @Thq, Description = @Descr, Prix = @Prix, " 
-                            + "Promotion = @Promo, TypeHebergement = @Hebergt WHERE CodeVoyage = @ID";
-
-            
-            cmd.Parameters.Add("@ID", this.comboModCode.Text.ToString());
-            cmd.Parameters.Add("@Dst", this.textModDest.Text.ToString());
-            cmd.Parameters.Add("@Duree", Convert.ToInt32(this.textModDuree.Text.ToString()));
-            cmd.Parameters.Add("@Thq", this.comboModThemq.SelectedValue);
-            cmd.Parameters.Add("@Descr", this.textModDescr.ToString());
-            cmd.Parameters.Add("@Prix", Convert.ToInt32(this.textModPrix.Text.ToString()));
-            cmd.Parameters.Add("@Promo", this.checkboxModPromo.Checked);
-            cmd.Parameters.Add("@Hebergt", this.comboModHebergt.SelectedValue.ToString()); 
-             */
-            try
+            DialogResult confirmation = MessageBox.Show("Etes-vous certain de vouloir ajouter ce voyage et ces réservations?","Comfirmez", MessageBoxButtons.YesNo);
+            if (confirmation == DialogResult.Yes)
             {
-                this.co.Open();
-                MessageBox.Show(req);
-                cmd.ExecuteNonQuery();
-                this.co.Close();
-            }
-            catch (OleDbException)
-            {
-                MessageBox.Show("ERREUR: Modification impossible!");
-            }
-            
+                string req = "UPDATE tblVoyages SET Destination = '" + this.textModDest.Text + "',"
+                                                 + "Duree = " + this.textModDuree.Text + ","
+                                                 + "TypeThematique = " + this.comboModThemq.SelectedValue + ","
+                                                 + "Description = '" + this.textModDescr.Text.Replace("'", " ") + "',"
+                                                 + "Prix = " + this.textModPrix.Text + ","
+                                                 + "Promotion = " + this.checkboxModPromo.Checked.ToString() + ","
+                                                 + "TypeHebergement = '" + this.comboModHebergt.SelectedValue + "'";
+
+                string finReq = " WHERE CodeVoyage='" + this.comboModCode.Text + "'";
+                req += finReq;
+
+                OleDbCommand cmd = new OleDbCommand(req, this.co);
+                try
+                {
+                    this.co.Open();
+                    MessageBox.Show(req);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (OleDbException)
+                {
+                    MessageBox.Show("ERREUR: Modification impossible!");
+                }
+                finally
+                {
+                    this.co.Close();
+                }
+            } 
         }
     }
 }
