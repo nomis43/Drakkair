@@ -44,6 +44,11 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.trackEtoiles = new System.Windows.Forms.TrackBar();
+			this.buttonValiderHotel = new Drakkair.Controls.UserButton();
+			this.textTelephone = new Drakkair.Controls.UserTextBox();
+			this.textAdresse = new Drakkair.Controls.UserTextBox();
+			this.textNomHotel = new Drakkair.Controls.UserTextBox();
+			this.textCode = new Drakkair.Controls.UserTextBox();
 			this.tabPage4 = new System.Windows.Forms.TabPage();
 			this.labelNote = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
@@ -55,11 +60,6 @@
 			this.label10 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
-			this.buttonValiderHotel = new Drakkair.Controls.UserButton();
-			this.textTelephone = new Drakkair.Controls.UserTextBox();
-			this.textAdresse = new Drakkair.Controls.UserTextBox();
-			this.textNomHotel = new Drakkair.Controls.UserTextBox();
-			this.textCode = new Drakkair.Controls.UserTextBox();
 			this.textNom = new Drakkair.Controls.UserTextBox();
 			this.textPrenom = new Drakkair.Controls.UserTextBox();
 			this.textTitre = new Drakkair.Controls.UserTextBox();
@@ -85,7 +85,7 @@
 			this.tabPage1.Location = new System.Drawing.Point(4, 33);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(934, 618);
+			this.tabPage1.Size = new System.Drawing.Size(1439, 678);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Liste des hôtels";
 			// 
@@ -97,11 +97,11 @@
 			this.dataGridListHotels.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
 			this.dataGridListHotels.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.dataGridListHotels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridListHotels.Location = new System.Drawing.Point(0, 0);
+			this.dataGridListHotels.Location = new System.Drawing.Point(-7, 0);
 			this.dataGridListHotels.Margin = new System.Windows.Forms.Padding(0);
 			this.dataGridListHotels.Name = "dataGridListHotels";
 			this.dataGridListHotels.RowTemplate.Height = 24;
-			this.dataGridListHotels.Size = new System.Drawing.Size(908, 534);
+			this.dataGridListHotels.Size = new System.Drawing.Size(1440, 675);
 			this.dataGridListHotels.TabIndex = 0;
 			// 
 			// tabPanel
@@ -117,7 +117,7 @@
 			this.tabPanel.Margin = new System.Windows.Forms.Padding(0);
 			this.tabPanel.Name = "tabPanel";
 			this.tabPanel.SelectedIndex = 0;
-			this.tabPanel.Size = new System.Drawing.Size(942, 655);
+			this.tabPanel.Size = new System.Drawing.Size(1447, 715);
 			this.tabPanel.TabIndex = 0;
 			// 
 			// tabPage2
@@ -128,7 +128,7 @@
 			this.tabPage2.Location = new System.Drawing.Point(4, 33);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(934, 618);
+			this.tabPage2.Size = new System.Drawing.Size(1569, 705);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "Appréciations sur un hôtel";
 			// 
@@ -143,7 +143,7 @@
 			this.panel1.Margin = new System.Windows.Forms.Padding(0);
 			this.panel1.Name = "panel1";
 			this.panel1.Padding = new System.Windows.Forms.Padding(10);
-			this.panel1.Size = new System.Drawing.Size(978, 84);
+			this.panel1.Size = new System.Drawing.Size(1569, 84);
 			this.panel1.TabIndex = 3;
 			// 
 			// label2
@@ -163,9 +163,8 @@
 			this.comboAppreciationHotel.FormattingEnabled = true;
 			this.comboAppreciationHotel.Location = new System.Drawing.Point(90, 25);
 			this.comboAppreciationHotel.Name = "comboAppreciationHotel";
-			this.comboAppreciationHotel.Size = new System.Drawing.Size(816, 32);
+			this.comboAppreciationHotel.Size = new System.Drawing.Size(1407, 32);
 			this.comboAppreciationHotel.TabIndex = 0;
-			this.comboAppreciationHotel.SelectedIndexChanged += new System.EventHandler(this.comboAppreciationHotel_SelectedIndexChanged);
 			// 
 			// dataGridAppreciationsHotel
 			// 
@@ -179,7 +178,7 @@
 			this.dataGridAppreciationsHotel.Margin = new System.Windows.Forms.Padding(0);
 			this.dataGridAppreciationsHotel.Name = "dataGridAppreciationsHotel";
 			this.dataGridAppreciationsHotel.RowTemplate.Height = 24;
-			this.dataGridAppreciationsHotel.Size = new System.Drawing.Size(938, 538);
+			this.dataGridAppreciationsHotel.Size = new System.Drawing.Size(1569, 625);
 			this.dataGridAppreciationsHotel.TabIndex = 2;
 			// 
 			// tabPage3
@@ -200,7 +199,7 @@
 			this.tabPage3.Location = new System.Drawing.Point(4, 33);
 			this.tabPage3.Name = "tabPage3";
 			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage3.Size = new System.Drawing.Size(934, 618);
+			this.tabPage3.Size = new System.Drawing.Size(1439, 678);
 			this.tabPage3.TabIndex = 2;
 			this.tabPage3.Text = "Ajouter un hôtel";
 			// 
@@ -272,6 +271,70 @@
 			this.trackEtoiles.TabIndex = 4;
 			this.trackEtoiles.Scroll += new System.EventHandler(this.trackEtoiles_Scroll);
 			// 
+			// buttonValiderHotel
+			// 
+			this.buttonValiderHotel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonValiderHotel.AutoSize = true;
+			this.buttonValiderHotel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(126)))), ((int)(((byte)(53)))));
+			this.buttonValiderHotel.FlatAppearance.BorderSize = 0;
+			this.buttonValiderHotel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.buttonValiderHotel.Location = new System.Drawing.Point(1295, 609);
+			this.buttonValiderHotel.Margin = new System.Windows.Forms.Padding(20, 20, 20, 30);
+			this.buttonValiderHotel.Name = "buttonValiderHotel";
+			this.buttonValiderHotel.Size = new System.Drawing.Size(101, 36);
+			this.buttonValiderHotel.TabIndex = 5;
+			this.buttonValiderHotel.Text = "VALIDER";
+			this.buttonValiderHotel.UseVisualStyleBackColor = false;
+			this.buttonValiderHotel.Click += new System.EventHandler(this.buttonValiderHotel_Click);
+			// 
+			// textTelephone
+			// 
+			this.textTelephone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.textTelephone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(126)))), ((int)(((byte)(53)))));
+			this.textTelephone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.textTelephone.ForeColor = System.Drawing.Color.White;
+			this.textTelephone.Location = new System.Drawing.Point(26, 254);
+			this.textTelephone.Name = "textTelephone";
+			this.textTelephone.Size = new System.Drawing.Size(1370, 32);
+			this.textTelephone.TabIndex = 3;
+			// 
+			// textAdresse
+			// 
+			this.textAdresse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.textAdresse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(126)))), ((int)(((byte)(53)))));
+			this.textAdresse.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.textAdresse.ForeColor = System.Drawing.Color.White;
+			this.textAdresse.Location = new System.Drawing.Point(26, 187);
+			this.textAdresse.Name = "textAdresse";
+			this.textAdresse.Size = new System.Drawing.Size(1370, 32);
+			this.textAdresse.TabIndex = 2;
+			// 
+			// textNomHotel
+			// 
+			this.textNomHotel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.textNomHotel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(126)))), ((int)(((byte)(53)))));
+			this.textNomHotel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.textNomHotel.ForeColor = System.Drawing.Color.White;
+			this.textNomHotel.Location = new System.Drawing.Point(26, 120);
+			this.textNomHotel.Name = "textNomHotel";
+			this.textNomHotel.Size = new System.Drawing.Size(1370, 32);
+			this.textNomHotel.TabIndex = 1;
+			// 
+			// textCode
+			// 
+			this.textCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.textCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(126)))), ((int)(((byte)(53)))));
+			this.textCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.textCode.ForeColor = System.Drawing.Color.White;
+			this.textCode.Location = new System.Drawing.Point(26, 53);
+			this.textCode.Name = "textCode";
+			this.textCode.Size = new System.Drawing.Size(1370, 32);
+			this.textCode.TabIndex = 0;
+			// 
 			// tabPage4
 			// 
 			this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
@@ -291,7 +354,7 @@
 			this.tabPage4.Location = new System.Drawing.Point(4, 33);
 			this.tabPage4.Name = "tabPage4";
 			this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage4.Size = new System.Drawing.Size(934, 618);
+			this.tabPage4.Size = new System.Drawing.Size(1439, 678);
 			this.tabPage4.TabIndex = 3;
 			this.tabPage4.Text = "Donner son appréciation";
 			// 
@@ -315,7 +378,7 @@
 			this.panel2.Margin = new System.Windows.Forms.Padding(0);
 			this.panel2.Name = "panel2";
 			this.panel2.Padding = new System.Windows.Forms.Padding(10);
-			this.panel2.Size = new System.Drawing.Size(948, 84);
+			this.panel2.Size = new System.Drawing.Size(2208, 84);
 			this.panel2.TabIndex = 13;
 			// 
 			// comboChoixHotel
@@ -326,7 +389,7 @@
 			this.comboChoixHotel.FormattingEnabled = true;
 			this.comboChoixHotel.Location = new System.Drawing.Point(95, 27);
 			this.comboChoixHotel.Name = "comboChoixHotel";
-			this.comboChoixHotel.Size = new System.Drawing.Size(785, 32);
+			this.comboChoixHotel.Size = new System.Drawing.Size(1295, 32);
 			this.comboChoixHotel.TabIndex = 0;
 			// 
 			// label3
@@ -397,70 +460,6 @@
 			this.label8.TabIndex = 2;
 			this.label8.Text = "Nom";
 			// 
-			// buttonValiderHotel
-			// 
-			this.buttonValiderHotel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonValiderHotel.AutoSize = true;
-			this.buttonValiderHotel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(126)))), ((int)(((byte)(53)))));
-			this.buttonValiderHotel.FlatAppearance.BorderSize = 0;
-			this.buttonValiderHotel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonValiderHotel.Location = new System.Drawing.Point(810, 561);
-			this.buttonValiderHotel.Margin = new System.Windows.Forms.Padding(20, 20, 20, 30);
-			this.buttonValiderHotel.Name = "buttonValiderHotel";
-			this.buttonValiderHotel.Size = new System.Drawing.Size(101, 36);
-			this.buttonValiderHotel.TabIndex = 5;
-			this.buttonValiderHotel.Text = "VALIDER";
-			this.buttonValiderHotel.UseVisualStyleBackColor = false;
-			this.buttonValiderHotel.Click += new System.EventHandler(this.buttonValiderHotel_Click);
-			// 
-			// textTelephone
-			// 
-			this.textTelephone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.textTelephone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(126)))), ((int)(((byte)(53)))));
-			this.textTelephone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.textTelephone.ForeColor = System.Drawing.Color.White;
-			this.textTelephone.Location = new System.Drawing.Point(26, 254);
-			this.textTelephone.Name = "textTelephone";
-			this.textTelephone.Size = new System.Drawing.Size(885, 32);
-			this.textTelephone.TabIndex = 3;
-			// 
-			// textAdresse
-			// 
-			this.textAdresse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.textAdresse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(126)))), ((int)(((byte)(53)))));
-			this.textAdresse.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.textAdresse.ForeColor = System.Drawing.Color.White;
-			this.textAdresse.Location = new System.Drawing.Point(26, 187);
-			this.textAdresse.Name = "textAdresse";
-			this.textAdresse.Size = new System.Drawing.Size(885, 32);
-			this.textAdresse.TabIndex = 2;
-			// 
-			// textNomHotel
-			// 
-			this.textNomHotel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.textNomHotel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(126)))), ((int)(((byte)(53)))));
-			this.textNomHotel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.textNomHotel.ForeColor = System.Drawing.Color.White;
-			this.textNomHotel.Location = new System.Drawing.Point(26, 120);
-			this.textNomHotel.Name = "textNomHotel";
-			this.textNomHotel.Size = new System.Drawing.Size(885, 32);
-			this.textNomHotel.TabIndex = 1;
-			// 
-			// textCode
-			// 
-			this.textCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.textCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(126)))), ((int)(((byte)(53)))));
-			this.textCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.textCode.ForeColor = System.Drawing.Color.White;
-			this.textCode.Location = new System.Drawing.Point(26, 53);
-			this.textCode.Name = "textCode";
-			this.textCode.Size = new System.Drawing.Size(885, 32);
-			this.textCode.TabIndex = 0;
-			// 
 			// textNom
 			// 
 			this.textNom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -470,7 +469,7 @@
 			this.textNom.ForeColor = System.Drawing.Color.White;
 			this.textNom.Location = new System.Drawing.Point(30, 132);
 			this.textNom.Name = "textNom";
-			this.textNom.Size = new System.Drawing.Size(886, 32);
+			this.textNom.Size = new System.Drawing.Size(1360, 32);
 			this.textNom.TabIndex = 12;
 			// 
 			// textPrenom
@@ -482,7 +481,7 @@
 			this.textPrenom.ForeColor = System.Drawing.Color.White;
 			this.textPrenom.Location = new System.Drawing.Point(30, 199);
 			this.textPrenom.Name = "textPrenom";
-			this.textPrenom.Size = new System.Drawing.Size(886, 32);
+			this.textPrenom.Size = new System.Drawing.Size(1360, 32);
 			this.textPrenom.TabIndex = 11;
 			// 
 			// textTitre
@@ -494,7 +493,7 @@
 			this.textTitre.ForeColor = System.Drawing.Color.White;
 			this.textTitre.Location = new System.Drawing.Point(30, 266);
 			this.textTitre.Name = "textTitre";
-			this.textTitre.Size = new System.Drawing.Size(886, 32);
+			this.textTitre.Size = new System.Drawing.Size(1360, 32);
 			this.textTitre.TabIndex = 10;
 			// 
 			// textCommentaire
@@ -507,7 +506,7 @@
 			this.textCommentaire.Location = new System.Drawing.Point(30, 333);
 			this.textCommentaire.Multiline = true;
 			this.textCommentaire.Name = "textCommentaire";
-			this.textCommentaire.Size = new System.Drawing.Size(886, 138);
+			this.textCommentaire.Size = new System.Drawing.Size(1360, 138);
 			this.textCommentaire.TabIndex = 9;
 			// 
 			// buttonValiderAppreciation
@@ -517,7 +516,7 @@
 			this.buttonValiderAppreciation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(126)))), ((int)(((byte)(53)))));
 			this.buttonValiderAppreciation.FlatAppearance.BorderSize = 0;
 			this.buttonValiderAppreciation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonValiderAppreciation.Location = new System.Drawing.Point(803, 561);
+			this.buttonValiderAppreciation.Location = new System.Drawing.Point(1282, 609);
 			this.buttonValiderAppreciation.Margin = new System.Windows.Forms.Padding(20, 20, 20, 30);
 			this.buttonValiderAppreciation.Name = "buttonValiderAppreciation";
 			this.buttonValiderAppreciation.Size = new System.Drawing.Size(108, 36);
@@ -531,7 +530,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-			this.ClientSize = new System.Drawing.Size(960, 673);
+			this.ClientSize = new System.Drawing.Size(1465, 733);
 			this.Controls.Add(this.tabPanel);
 			this.Font = new System.Drawing.Font("Open Sans", 10.8F);
 			this.ForeColor = System.Drawing.Color.White;

@@ -28,6 +28,8 @@ namespace Drakkair
 		public FormHotels(OleDbConnection db)
 		{
 			InitializeComponent();
+			dataGridAppreciationsHotel.ForeColor = Color.Black;
+			dataGridListHotels.ForeColor = Color.Black;
 			this.DB = db;
 		}
 		// ----------------------------------------------------------------
@@ -62,6 +64,13 @@ namespace Drakkair
 		// ----------------------------------------------------------------
 
 		/// <summary>
+		/// ID de l'appréciation suivante.
+		/// Nécessaire au respect de la cotrainte PK sur la table des appréciations.
+		/// </summary>
+		private int APPRECIATION_ID = 1;
+		// ----------------------------------------------------------------
+
+		/// <summary>
 		/// Crée une table d'hôtels et une table d'appréciation.
 		/// Fait les contraintes.
 		/// </summary>
@@ -84,6 +93,7 @@ namespace Drakkair
 			var appreciations = new DataTable("Appreciations");
 
 			appreciations.Columns.AddRange(new[]{
+				new DataColumn("id"),
 				new DataColumn("auteur_nom"),
 				new DataColumn("auteur_prenom"),
 				new DataColumn("hotel_code"),
@@ -97,6 +107,7 @@ namespace Drakkair
 
 			// contraintes
 			hotels.Constraints.Add("PK_hotel_code", hotels.Columns["code"], true);
+			appreciations.Constraints.Add("PK_appreciation_id", appreciations.Columns["id"], true);
 
 			appreciations.Constraints.Add("FK_appreciation_hotel",
 				primaryKeyColumn: hotels.Columns["code"],
@@ -126,7 +137,7 @@ namespace Drakkair
 		private void FormHotels_Load(object sender, EventArgs e)
 		{
 			RetrieveData();
-
+			
 			// ajout de quelques hotels
 			AddRowToTable("Hotels", new object[,]{
 				{"code",      2014},
@@ -167,27 +178,41 @@ namespace Drakkair
 				{"telephone", "06 78 99 30 12"},
 				{"etoiles",   2}
 			});
-
+			
 			// liaison dataGridListHotels - Table "Hotels"
 			dataGridListHotels.DataSource = DATA.Tables["Hotels"];
-
+			
 			dataGridListHotels.Columns["code"].HeaderText      = "CODE";
 			dataGridListHotels.Columns["nom"].HeaderText       = "HOTEL";
 			dataGridListHotels.Columns["adresse"].HeaderText   = "ADRESSE";
 			dataGridListHotels.Columns["telephone"].HeaderText = "TELEPHONE";
 			dataGridListHotels.Columns["etoiles"].HeaderText   = "ETOILES";
 
-			dataGridListHotels.AutoSize = true;
+			dataGridListHotels.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 			dataGridListHotels.Columns["code"].Frozen = true;
-
+			
 			// liaison dataGridAppreciationsHotel - Table "Appreciations"
 			dataGridAppreciationsHotel.DataSource = new DataView(DATA.Tables["Appreciations"]);
 
-			// liaison comboAppreciationHotel - Table "Hotels"
-			ComboDataLink(comboAppreciationHotel, "Hotels", "code", "nom");
+			dataGridAppreciationsHotel.Columns["id"].HeaderText            = "ID";
+			dataGridAppreciationsHotel.Columns["auteur_nom"].HeaderText    = "NOM";
+			dataGridAppreciationsHotel.Columns["auteur_prenom"].HeaderText = "PRENOM";
+			dataGridAppreciationsHotel.Columns["hotel_code"].HeaderText    = "HOTEL";
+			dataGridAppreciationsHotel.Columns["titre"].HeaderText         = "TITRE";
+			dataGridAppreciationsHotel.Columns["commentaire"].HeaderText   = "COMMENTAIRE";
+			dataGridAppreciationsHotel.Columns["note"].HeaderText          = "NOTE";
+			dataGridAppreciationsHotel.Columns["date"].HeaderText          = "DATE";
+
+			dataGridAppreciationsHotel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+			dataGridAppreciationsHotel.Columns["id"].Frozen = true;
 
 			// liaison comboChoixHotel - Table "Hotels"
 			ComboDataLink(comboChoixHotel, "Hotels", "code", "nom");
+			
+			// liaison comboAppreciationHotel - Table "Hotels"
+			ComboDataLink(comboAppreciationHotel, "Hotels", "code", "nom");
+			
+			comboAppreciationHotel.SelectedIndexChanged += new EventHandler(comboAppreciationHotel_SelectedIndexChanged);
 		}
 		// ----------------------------------------------------------------
 		
@@ -197,25 +222,8 @@ namespace Drakkair
 		private void comboAppreciationHotel_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			dataGridAppreciationsHotel.DataSource = new DataView(DATA.Tables["Appreciations"]) {
-				RowFilter = "hotel_code = " + (int)comboAppreciationHotel.SelectedValue
+				RowFilter = "hotel_code = " + int.Parse(comboAppreciationHotel.SelectedValue.ToString())
 			};
-		}
-		// ----------------------------------------------------------------
-		
-		/// <summary>
-		/// Ajoute une nouvelle appréciation sur un hôtel.
-		/// </summary>
-		private void buttonValiderAppreciation_Click(object sender, EventArgs e)
-		{
-			AddRowToTable("Appreciations", new object[,]{
-				{"auteur_nom",    textNom.Text},
-				{"auteur_prenom", textPrenom.Text},
-				{"hotel_code",    (int)comboAppreciationHotel.SelectedValue},
-				{"titre",         textTitre.Text},
-				{"commentaire",   textCommentaire.Text},
-				{"note",          trackNote.Value},
-				{"date",          DateTime.Now}
-			});
 		}
 		// ----------------------------------------------------------------
 
@@ -230,6 +238,24 @@ namespace Drakkair
 				{"adresse",   textAdresse.Text},
 				{"telephone", textTelephone.Text},
 				{"etoiles",   trackEtoiles.Value}
+			});
+		}
+		// ----------------------------------------------------------------
+		
+		/// <summary>
+		/// Ajoute une nouvelle appréciation sur un hôtel.
+		/// </summary>
+		private void buttonValiderAppreciation_Click(object sender, EventArgs e)
+		{
+			AddRowToTable("Appreciations", new object[,]{
+				{"id",            APPRECIATION_ID++},
+				{"auteur_nom",    textNom.Text},
+				{"auteur_prenom", textPrenom.Text},
+				{"hotel_code",    int.Parse(comboChoixHotel.SelectedValue.ToString())},
+				{"titre",         textTitre.Text},
+				{"commentaire",   textCommentaire.Text},
+				{"note",          trackNote.Value},
+				{"date",          DateTime.Now}
 			});
 		}
 		// ----------------------------------------------------------------
