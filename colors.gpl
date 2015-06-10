@@ -2,8 +2,8 @@ GIMP Palette
 Name: Drakkair
 Columns: 0
 # EPIC ASSO
-255 255 255 #ffffff
- 82 126  53 #527e35
- 51  51  51 #333333
- 38  38  38 #262626
-177  91   2 #b15b02
+255 255 255 #ffffff : white
+ 82 126  53 #527e35 : green
+ 51  51  51 #333333 : light grey
+ 38  38  38 #262626 : dark grey
+177  91   2 #b15b02 : orange
