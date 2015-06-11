@@ -14,14 +14,14 @@ namespace Drakkair
     public partial class FormVisuOffres : Form
     {
 
-        private OleDbConnection connec ;
+        private OleDbConnection co ;
         
         DataSet ds = new DataSet();
 
         BindingSource bindingsource = new BindingSource();
         public FormVisuOffres(OleDbConnection co)
         {
-           this.connec = co;
+            this.co = co;
             InitializeComponent();
  
         }
@@ -90,6 +90,11 @@ namespace Drakkair
             bindingsource.MoveLast();
             DisplayPosition();
            
+        }
+
+        private void textBoxPrix_TextChanged(object sender, EventArgs e)
+        {
+
         }
         
     }
