@@ -190,6 +190,7 @@ namespace Drakkair
 
 			dataGridListHotels.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 			dataGridListHotels.Columns["code"].Frozen = true;
+			dataGridListHotels.AllowUserToAddRows = false;
 			
 			// liaison dataGridAppreciationsHotel - Table "Appreciations"
 			dataGridAppreciationsHotel.DataSource = new DataView(DATA.Tables["Appreciations"]);
