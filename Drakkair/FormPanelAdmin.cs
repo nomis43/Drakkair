@@ -149,6 +149,7 @@ FROM ((tblVoyages INNER JOIN tblHebergement ON tblVoyages.TypeHebergement = tblH
             string req = "INSERT INTO tblVoyages (CodeVoyage, Destination, Duree, TypeThematique, Description, Prix, TypeHebergement) VALUES ('" + code + "','" + destination + "'," + nbJours + "," + thematique + ",'" + description + "'," + prix + ",'" +hebergement+"')";
             listeTransaction.Add(req);
         }
+
         private void buttonPhoto_Click(object sender, EventArgs e)
         {
             labelPhoto.Text = SelectFichier();
@@ -219,8 +220,10 @@ FROM ((tblVoyages INNER JOIN tblHebergement ON tblVoyages.TypeHebergement = tblH
                     string formatDate = "#" + date.ToString("MM/dd/yyyy") + "#";
 
                     req = "INSERT INTO tblReservations (NumClient, CodeVoyage, NombrePersonnes, DateReservation) VALUES (" 
-                        + clientId.SelectedValue + ",'" + textCode.Text.ToString() 
-                        + "'," + nbPers.Text.ToString() + "," + formatDate + ")";
+                        + clientId.SelectedValue + ",'" 
+                        + textCode.Text.ToString() 
+                        + "'," + nbPers.Text.ToString() 
+                        + "," + formatDate + ")";
                     listeTransaction.Add(req);
                 }
             }

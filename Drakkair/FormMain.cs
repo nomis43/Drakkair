@@ -388,7 +388,7 @@ namespace Drakkair
 				where.Add("theme = " + comboTheme.SelectedValue);
 
 			if(!comboPension.SelectedValue.Equals(-1))
-				where.Add("pension = '" + comboPension.SelectedValue);
+				where.Add("pension = '" + comboPension.SelectedValue + "'");
 
 			int min;
 			if(int.TryParse(textPrixMin.Text, out min))
@@ -407,7 +407,7 @@ namespace Drakkair
 		/// </summary>
 		private void buttonDetailsOffres_Click(object sender, EventArgs e)
 		{
-			
+            new FormVisuOffres(DB).Show();
 		}
 		// ----------------------------------------------------------------
 
@@ -416,7 +416,7 @@ namespace Drakkair
 		/// </summary>
 		private void buttonAdmin_Click(object sender, EventArgs e)
 		{
-			
+            new FormPanelAdmin(DB).Show();
 		}
 		// ----------------------------------------------------------------
 
