@@ -90,7 +90,7 @@ namespace Drakkair
 			labelTmp = new Label();
 			labelTmp.Text = "Critères de recherche";
 			labelTmp.Font = new System.Drawing.Font("Open Sans", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			labelTmp.Margin = new System.Windows.Forms.Padding(6);
+			labelTmp.Margin = new System.Windows.Forms.Padding(6,30,6,6);
 			labelTmp.Size = new System.Drawing.Size(338, 36);
 			panelSideBar.Controls.Add(labelTmp);
 
@@ -224,26 +224,30 @@ namespace Drakkair
 
 			new OleDbDataAdapter(@"
 				SELECT
-					CodeVoyage AS [Code de l'offre],
-					Destination,
-					Duree AS [Durée],
-					Description,
-					Prix AS [Tarif en €],
-
-					tblDeparts.cdeVille         AS depart,
-					tblThematique.codeThem      AS theme,
-					tblHebergement.NumCategorie AS pension
-
-				FROM (((tblVoyages
-				
-				INNER JOIN tblDeparts
-				ON tblVoyages.CodeVoyage = tblDeparts.cdeVoyage)
-				
-				INNER JOIN tblThematique
-				ON tblVoyages.TypeThematique = tblThematique.codeThem)
-				
-				INNER JOIN tblHebergement
-				ON tblVoyages.TypeHebergement = tblHebergement.NumCategorie)
+					tblVoyages.CodeVoyage AS [Code de l'offre],
+					tblVoyages.Destination,
+					tblVoyages.Duree AS [Durée],
+					tblVoyages.Description,
+					tblVoyages.Prix AS [Tarif en €],
+					tblVoyages.TypeThematique AS [theme_id],
+					tblVoyages.TypeHebergement AS [pension_id],
+					tblDeparts.cdeVille AS [ville_id],
+					tblHebergement.NomCategorie AS [Pension],
+					tblThematique.libThem AS [Thème],
+					tblVilles.nomVille AS [Ville de départ]
+				FROM ((((tblVoyages
+								INNER JOIN tblDeparts
+								ON tblVoyages.CodeVoyage = tblDeparts.cdeVoyage
+							)
+							INNER JOIN tblVilles
+							ON tblDeparts.cdeVille = tblVilles.codeVille
+						)
+						INNER JOIN tblHebergement
+						ON tblVoyages.TypeHebergement = tblHebergement.NumCategorie
+					)
+					INNER JOIN tblThematique
+					ON tblVoyages.TypeThematique = tblThematique.codeThem
+				)
 			", DB).Fill(DATA, "Voyages");
 		}
 		// ----------------------------------------------------------------
@@ -267,21 +271,6 @@ namespace Drakkair
 			combo.DataSource = DATA.Tables[tableName];
 			combo.ValueMember = valueMember;
 			combo.DisplayMember = displayMemeber;
-		}
-		// ----------------------------------------------------------------
-
-		/// <summary>
-		/// Fait une liaison de données sur un data grid view avec une table de this.DATA.
-		/// Sélectionne les lignes à afficher avec une clause SQL.
-		/// </summary>
-		/// <param name="grid">Le data grid viewà lier.</param>
-		/// <param name="tableName">Le nom de la table dans laquelle aller chercher les données.</param>
-		/// <param name="where">La condition pour la sélection des lignes à afficher.</param>
-		private void GridDataLink(DataGridView grid, string tableName, string where)
-		{
-			grid.DataSource = new DataView(DATA.Tables[tableName]) {
-				RowFilter = where
-			};
 		}
 		// ----------------------------------------------------------------
 
@@ -335,7 +324,7 @@ namespace Drakkair
 
 			// création de lignes fictives dans les tables pour simuler la sélection de toutes les options.
 			AddRowToTable("Departs", new object[,]{
-				{"id", -1},
+				{"id", "-1"},
 				{"name", "Tous les départs"}
 			});
 			comboDepart.SelectedValue = -1;
@@ -360,9 +349,15 @@ namespace Drakkair
 			this.comboDepart.SelectedIndexChanged  += new EventHandler(this.RefreshDataGrid);
 			this.comboTheme.SelectedIndexChanged   += new EventHandler(this.RefreshDataGrid);
 			this.comboPension.SelectedIndexChanged += new EventHandler(this.RefreshDataGrid);
-
+			
 			this.textPrixMin.TextChanged           += new EventHandler(this.RefreshDataGrid);
 			this.textPrixMax.TextChanged           += new EventHandler(this.RefreshDataGrid);
+			
+			// liaison de données dataGridView- Table "Voyages"
+			dataGridView.DataSource = new DataView(DATA.Tables["Voyages"]);
+			dataGridView.Columns["theme_id"].Visible = false;
+			dataGridView.Columns["pension_id"].Visible = false;
+			dataGridView.Columns["ville_id"].Visible = false;
 		}
 		// ----------------------------------------------------------------
 
@@ -371,34 +366,44 @@ namespace Drakkair
 		/// </summary>
 		private void RefreshDataGrid(object sender, EventArgs e)
 		{
-			// si c'est un bouton de recherche par catégorie, on ne tient pas compte des autres critères.
+			// si c'est un bouton de la liste "Catégories d'offres", on ne prend pas en compte les autres critères 
 			if(sender is LinkButton)
 			{
-				GridDataLink(dataGridView, "Voyages", "theme = " + (sender as LinkButton).Tag);
+				dataGridView.DataSource = new DataView(DATA.Tables["Voyages"]) {
+					RowFilter = @"theme_id = " + (sender as LinkButton).Tag
+				};
+
 				return;
 			}
 
-			// sinon, on fait une recheche normale avec rafraichissement des critères
-			var where = new List<string>();
+			List<string> where = new List<string>();
 
-			if(!comboDepart.SelectedValue.Equals(-1))
-				where.Add("depart = '" + comboDepart.SelectedValue + "'");
+			if(!comboDepart.SelectedValue.Equals("-1"))
+				where.Add("ville_id = '" + comboDepart.SelectedValue + "'");
 
 			if(!comboTheme.SelectedValue.Equals(-1))
-				where.Add("theme = " + comboTheme.SelectedValue);
+				where.Add("theme_id = " + comboTheme.SelectedValue);
 
 			if(!comboPension.SelectedValue.Equals(-1))
-				where.Add("pension = '" + comboPension.SelectedValue + "'");
+				where.Add("pension_id = " + comboPension.SelectedValue);
 
-			int min;
-			if(int.TryParse(textPrixMin.Text, out min))
-				where.Add("[Tarif en €] >= " + min);
+			try
+			{
+				where.Add("[Tarif en €] <= " + int.Parse(textPrixMax.Text));
+			}
+			catch(FormatException)
+			{}
 
-			int max;
-			if(int.TryParse(textPrixMax.Text, out max))
-				where.Add("[Tarif en €] <= " + max);
+			try
+			{
+				where.Add("[Tarif en €] >= " + int.Parse(textPrixMin.Text));
+			}
+			catch(FormatException)
+			{ }
 
-			GridDataLink(dataGridView, "Voyages", string.Join(" AND ", where));
+			dataGridView.DataSource = new DataView(DATA.Tables["Voyages"]) {
+				RowFilter = string.Join(" AND ", where)
+			};
 		}
 		// ----------------------------------------------------------------
 
@@ -407,7 +412,7 @@ namespace Drakkair
 		/// </summary>
 		private void buttonDetailsOffres_Click(object sender, EventArgs e)
 		{
-            new FormVisuOffres(DB).Show();
+			
 		}
 		// ----------------------------------------------------------------
 
@@ -416,7 +421,7 @@ namespace Drakkair
 		/// </summary>
 		private void buttonAdmin_Click(object sender, EventArgs e)
 		{
-            new FormPanelAdmin(DB).Show();
+			
 		}
 		// ----------------------------------------------------------------
 
