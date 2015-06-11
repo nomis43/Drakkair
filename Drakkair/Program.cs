@@ -6,7 +6,6 @@ using System.Windows.Forms;
 
 namespace Drakkair
 {
-<<<<<<< HEAD
     static class Program
     {
         /// <summary>
@@ -17,8 +16,7 @@ namespace Drakkair
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FormMain());
-            Application.Run(new FormPanelAdmin());
+            Application.Run(new FormMain());
         }
     }
 }
