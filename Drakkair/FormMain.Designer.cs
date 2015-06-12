@@ -31,11 +31,11 @@
 		{
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.panelTopBar = new System.Windows.Forms.Panel();
+			this.buttonHotels = new Drakkair.Controls.UserButton();
 			this.buttonAdmin = new System.Windows.Forms.Button();
 			this.pictureLogo = new System.Windows.Forms.PictureBox();
 			this.panelSideBar = new System.Windows.Forms.FlowLayoutPanel();
 			this.dataGridView = new System.Windows.Forms.DataGridView();
-			this.buttonHotels = new Drakkair.Controls.UserButton();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.panelTopBar.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
@@ -77,6 +77,21 @@
 			this.panelTopBar.Name = "panelTopBar";
 			this.panelTopBar.Size = new System.Drawing.Size(756, 150);
 			this.panelTopBar.TabIndex = 1;
+			// 
+			// buttonHotels
+			// 
+			this.buttonHotels.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonHotels.AutoSize = true;
+			this.buttonHotels.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(126)))), ((int)(((byte)(53)))));
+			this.buttonHotels.FlatAppearance.BorderSize = 0;
+			this.buttonHotels.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.buttonHotels.Location = new System.Drawing.Point(492, 84);
+			this.buttonHotels.Margin = new System.Windows.Forms.Padding(20, 20, 20, 30);
+			this.buttonHotels.Name = "buttonHotels";
+			this.buttonHotels.Size = new System.Drawing.Size(97, 36);
+			this.buttonHotels.TabIndex = 2;
+			this.buttonHotels.Text = "HÔTELS";
+			this.buttonHotels.UseVisualStyleBackColor = false;
 			// 
 			// buttonAdmin
 			// 
@@ -131,24 +146,9 @@
 			this.dataGridView.Size = new System.Drawing.Size(750, 607);
 			this.dataGridView.TabIndex = 4;
 			// 
-			// buttonHotels
-			// 
-			this.buttonHotels.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonHotels.AutoSize = true;
-			this.buttonHotels.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(126)))), ((int)(((byte)(53)))));
-			this.buttonHotels.FlatAppearance.BorderSize = 0;
-			this.buttonHotels.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonHotels.Location = new System.Drawing.Point(492, 84);
-			this.buttonHotels.Margin = new System.Windows.Forms.Padding(20, 20, 20, 30);
-			this.buttonHotels.Name = "buttonHotels";
-			this.buttonHotels.Size = new System.Drawing.Size(97, 36);
-			this.buttonHotels.TabIndex = 2;
-			this.buttonHotels.Text = "HÔTELS";
-			this.buttonHotels.UseVisualStyleBackColor = false;
-			// 
 			// FormMain
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
 			this.ClientSize = new System.Drawing.Size(1102, 760);
@@ -157,7 +157,7 @@
 			this.ForeColor = System.Drawing.Color.White;
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "FormMain";
-			this.Text = "FormMain";
+			this.Text = "Drakkair - Trip manager";
 			this.Load += new System.EventHandler(this.FormMain_Load);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.panelTopBar.ResumeLayout(false);

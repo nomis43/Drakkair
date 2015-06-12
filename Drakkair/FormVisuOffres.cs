@@ -15,15 +15,19 @@ namespace Drakkair
     {
 
         private OleDbConnection co ;
-        
-        DataSet ds = new DataSet();
 
-        BindingSource bindingsource = new BindingSource();
-        public FormVisuOffres(OleDbConnection co)
+		private DataSet ds = new DataSet();
+
+        private BindingSource bindingsource = new BindingSource();
+
+		public FormVisuOffres()
+		{
+			InitializeComponent();
+		}
+
+        public FormVisuOffres(OleDbConnection co) : this()
         {
             this.co = co;
-            InitializeComponent();
- 
         }
 
         private void FormVisuOffres_Load(object sender, EventArgs e)
@@ -58,12 +62,14 @@ namespace Drakkair
             checkBoxPromo.DataBindings.Add(new Binding("Checked", bindingsource, "Promotion"));
 
             DisplayPosition();
+
+			co.Close();
             
 
         }
         private void DisplayPosition()
         {
-            lbl_pos.Text = this.bindingsource.Position+1.ToString() + "/" + bindingsource.Count;
+            lbl_pos.Text = (this.bindingsource.Position + 1).ToString() + "/" + bindingsource.Count;
         }
         private void btn_first_Click(object sender, EventArgs e)
         {

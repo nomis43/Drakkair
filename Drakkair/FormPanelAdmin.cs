@@ -308,7 +308,7 @@ FROM ((tblVoyages INNER JOIN tblHebergement ON tblVoyages.TypeHebergement = tblH
         {
             foreach (Control c in listControls)
             {
-                if (c.GetType() != typeof(Button) && c.GetType() != typeof(Label) && c.GetType() != typeof(CheckBox))
+                if (c.GetType() != typeof(Controls.UserButton) && c.GetType() != typeof(Label) && c.GetType() != typeof(CheckBox))
                 {
                     c.ResetText();
                 }
@@ -385,12 +385,15 @@ FROM ((tblVoyages INNER JOIN tblHebergement ON tblVoyages.TypeHebergement = tblH
         private void buttonModifier_Click(object sender, EventArgs e)
         {
             DialogResult confirmation = MessageBox.Show("Etes-vous certain de vouloir ajouter ce voyage et ces réservations?","Comfirmez", MessageBoxButtons.YesNo);
+			
+
             if (confirmation == DialogResult.Yes)
             {
+				
                 string req = "UPDATE tblVoyages SET Destination = '" + this.textModDest.Text + "',"
                                                  + "Duree = " + this.textModDuree.Text + ","
                                                  + "TypeThematique = " + this.comboModThemq.SelectedValue + ","
-                                                 + "Description = '" + this.textModDescr.Text.Replace("'", " ") + "',"
+                                                 + "Description = '" + this.textModDescr.Text.Replace("'", "''") + "',"
                                                  + "Prix = " + this.textModPrix.Text + ","
                                                  + "Promotion = " + this.checkboxModPromo.Checked.ToString() + ","
                                                  + "TypeHebergement = '" + this.comboModHebergt.SelectedValue + "'";
@@ -402,8 +405,28 @@ FROM ((tblVoyages INNER JOIN tblHebergement ON tblVoyages.TypeHebergement = tblH
                 try
                 {
                     this.co.Open();
-                    MessageBox.Show(req);
+                    // MessageBox.Show(req);
                     cmd.ExecuteNonQuery();
+
+					//this.ds.Tables["Voyages"].Rows[(int)this.comboModCode.SelectedIndex]["Destination"] = this.textModDest.Text;
+					//this.ds.Tables["Voyages"].Rows[(int)this.comboModCode.SelectedIndex]["Duree"] = this.textModDuree.Text;
+					//this.ds.Tables["Voyages"].Rows[(int)this.comboModCode.SelectedIndex]["TypeThematique"] = this.comboModThemq.SelectedValue;
+					//this.ds.Tables["Voyages"].Rows[(int)this.comboModCode.SelectedIndex]["Description"] = this.textModDescr.Text;
+					//this.ds.Tables["Voyages"].Rows[(int)this.comboModCode.SelectedIndex]["Prix"] = this.textModPrix.Text;
+					//this.ds.Tables["Voyages"].Rows[(int)this.comboModCode.SelectedIndex]["Promotion"] = this.checkboxModPromo.Checked.ToString();
+					//this.ds.Tables["Voyages"].Rows[(int)this.comboModCode.SelectedIndex]["TypeHebergement"] = this.comboModHebergt.SelectedValue;
+
+					/*DataRow row = this.ds.Tables["Voyages"].NewRow();
+					row["Destination"] = this.textModDest.Text;
+					row["Duree"] = this.textModDuree.Text;
+					row["TypeThematique"] = this.comboModThemq.SelectedValue;
+					row["Description"] = this.textModDescr.Text;
+					row["Prix"] = this.textModPrix.Text;
+					row["Promotion"] = this.checkboxModPromo.Checked.ToString();
+					row["TypeHebergement"] = this.comboModHebergt.SelectedValue;
+
+					this.ds.Tables["Voyages"].Rows.Add(row);
+					this.ds.Tables["Voyages"].Rows[(int)this.comboModCode.SelectedIndex].Delete();*/
                 }
                 catch (OleDbException)
                 {
@@ -415,5 +438,13 @@ FROM ((tblVoyages INNER JOIN tblHebergement ON tblVoyages.TypeHebergement = tblH
                 }
             } 
         }
+
+		private void buttonAnnulerTransaction_Click(object sender, EventArgs e)
+		{
+			this.resetTabVoyage();
+			this.resetControls(this.grpReservation1.Controls);
+			this.resetControls(this.grpReservation2.Controls);
+			this.resetControls(this.grpReservation3.Controls);
+		}
     }
 }

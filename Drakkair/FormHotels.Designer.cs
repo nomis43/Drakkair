@@ -82,10 +82,10 @@
 			// 
 			this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
 			this.tabPage1.Controls.Add(this.dataGridListHotels);
-			this.tabPage1.Location = new System.Drawing.Point(4, 33);
+			this.tabPage1.Location = new System.Drawing.Point(4, 28);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(1439, 678);
+			this.tabPage1.Size = new System.Drawing.Size(781, 683);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Liste des hôtels";
 			// 
@@ -101,7 +101,7 @@
 			this.dataGridListHotels.Margin = new System.Windows.Forms.Padding(0);
 			this.dataGridListHotels.Name = "dataGridListHotels";
 			this.dataGridListHotels.RowTemplate.Height = 24;
-			this.dataGridListHotels.Size = new System.Drawing.Size(1440, 675);
+			this.dataGridListHotels.Size = new System.Drawing.Size(782, 675);
 			this.dataGridListHotels.TabIndex = 0;
 			// 
 			// tabPanel
@@ -117,7 +117,7 @@
 			this.tabPanel.Margin = new System.Windows.Forms.Padding(0);
 			this.tabPanel.Name = "tabPanel";
 			this.tabPanel.SelectedIndex = 0;
-			this.tabPanel.Size = new System.Drawing.Size(1447, 715);
+			this.tabPanel.Size = new System.Drawing.Size(789, 715);
 			this.tabPanel.TabIndex = 0;
 			// 
 			// tabPage2
@@ -125,10 +125,10 @@
 			this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
 			this.tabPage2.Controls.Add(this.panel1);
 			this.tabPage2.Controls.Add(this.dataGridAppreciationsHotel);
-			this.tabPage2.Location = new System.Drawing.Point(4, 33);
+			this.tabPage2.Location = new System.Drawing.Point(4, 28);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(1569, 705);
+			this.tabPage2.Size = new System.Drawing.Size(781, 683);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "Appréciations sur un hôtel";
 			// 
@@ -143,7 +143,7 @@
 			this.panel1.Margin = new System.Windows.Forms.Padding(0);
 			this.panel1.Name = "panel1";
 			this.panel1.Padding = new System.Windows.Forms.Padding(10);
-			this.panel1.Size = new System.Drawing.Size(1569, 84);
+			this.panel1.Size = new System.Drawing.Size(785, 84);
 			this.panel1.TabIndex = 3;
 			// 
 			// label2
@@ -151,7 +151,7 @@
 			this.label2.AutoSize = true;
 			this.label2.Location = new System.Drawing.Point(24, 28);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(60, 26);
+			this.label2.Size = new System.Drawing.Size(46, 20);
 			this.label2.TabIndex = 1;
 			this.label2.Text = "Hôtel";
 			// 
@@ -163,11 +163,12 @@
 			this.comboAppreciationHotel.FormattingEnabled = true;
 			this.comboAppreciationHotel.Location = new System.Drawing.Point(90, 25);
 			this.comboAppreciationHotel.Name = "comboAppreciationHotel";
-			this.comboAppreciationHotel.Size = new System.Drawing.Size(1407, 32);
+			this.comboAppreciationHotel.Size = new System.Drawing.Size(623, 27);
 			this.comboAppreciationHotel.TabIndex = 0;
 			// 
 			// dataGridAppreciationsHotel
 			// 
+			this.dataGridAppreciationsHotel.AllowUserToAddRows = false;
 			this.dataGridAppreciationsHotel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -178,7 +179,7 @@
 			this.dataGridAppreciationsHotel.Margin = new System.Windows.Forms.Padding(0);
 			this.dataGridAppreciationsHotel.Name = "dataGridAppreciationsHotel";
 			this.dataGridAppreciationsHotel.RowTemplate.Height = 24;
-			this.dataGridAppreciationsHotel.Size = new System.Drawing.Size(1569, 625);
+			this.dataGridAppreciationsHotel.Size = new System.Drawing.Size(911, 625);
 			this.dataGridAppreciationsHotel.TabIndex = 2;
 			// 
 			// tabPage3
@@ -196,10 +197,10 @@
 			this.tabPage3.Controls.Add(this.textAdresse);
 			this.tabPage3.Controls.Add(this.textNomHotel);
 			this.tabPage3.Controls.Add(this.textCode);
-			this.tabPage3.Location = new System.Drawing.Point(4, 33);
+			this.tabPage3.Location = new System.Drawing.Point(4, 28);
 			this.tabPage3.Name = "tabPage3";
 			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage3.Size = new System.Drawing.Size(1439, 678);
+			this.tabPage3.Size = new System.Drawing.Size(781, 683);
 			this.tabPage3.TabIndex = 2;
 			this.tabPage3.Text = "Ajouter un hôtel";
 			// 
@@ -208,7 +209,7 @@
 			this.labelEtoiles.AutoSize = true;
 			this.labelEtoiles.Location = new System.Drawing.Point(187, 321);
 			this.labelEtoiles.Name = "labelEtoiles";
-			this.labelEtoiles.Size = new System.Drawing.Size(23, 26);
+			this.labelEtoiles.Size = new System.Drawing.Size(18, 20);
 			this.labelEtoiles.TabIndex = 11;
 			this.labelEtoiles.Text = "0";
 			// 
@@ -218,7 +219,7 @@
 			this.label13.Location = new System.Drawing.Point(27, 294);
 			this.label13.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
 			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(71, 26);
+			this.label13.Size = new System.Drawing.Size(54, 20);
 			this.label13.TabIndex = 10;
 			this.label13.Text = "Etoiles";
 			// 
@@ -228,7 +229,7 @@
 			this.label7.Location = new System.Drawing.Point(27, 26);
 			this.label7.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(58, 26);
+			this.label7.Size = new System.Drawing.Size(44, 20);
 			this.label7.TabIndex = 9;
 			this.label7.Text = "Code";
 			// 
@@ -238,7 +239,7 @@
 			this.label6.Location = new System.Drawing.Point(27, 93);
 			this.label6.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(55, 26);
+			this.label6.Size = new System.Drawing.Size(43, 20);
 			this.label6.TabIndex = 8;
 			this.label6.Text = "Nom";
 			// 
@@ -248,7 +249,7 @@
 			this.label5.Location = new System.Drawing.Point(27, 160);
 			this.label5.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(84, 26);
+			this.label5.Size = new System.Drawing.Size(63, 20);
 			this.label5.TabIndex = 7;
 			this.label5.Text = "Adresse";
 			// 
@@ -258,7 +259,7 @@
 			this.label4.Location = new System.Drawing.Point(27, 227);
 			this.label4.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(108, 26);
+			this.label4.Size = new System.Drawing.Size(81, 20);
 			this.label4.TabIndex = 6;
 			this.label4.Text = "Téléphone";
 			// 
@@ -267,7 +268,7 @@
 			this.trackEtoiles.Location = new System.Drawing.Point(26, 321);
 			this.trackEtoiles.Maximum = 5;
 			this.trackEtoiles.Name = "trackEtoiles";
-			this.trackEtoiles.Size = new System.Drawing.Size(155, 56);
+			this.trackEtoiles.Size = new System.Drawing.Size(155, 45);
 			this.trackEtoiles.TabIndex = 4;
 			this.trackEtoiles.Scroll += new System.EventHandler(this.trackEtoiles_Scroll);
 			// 
@@ -278,7 +279,7 @@
 			this.buttonValiderHotel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(126)))), ((int)(((byte)(53)))));
 			this.buttonValiderHotel.FlatAppearance.BorderSize = 0;
 			this.buttonValiderHotel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonValiderHotel.Location = new System.Drawing.Point(1295, 609);
+			this.buttonValiderHotel.Location = new System.Drawing.Point(637, 609);
 			this.buttonValiderHotel.Margin = new System.Windows.Forms.Padding(20, 20, 20, 30);
 			this.buttonValiderHotel.Name = "buttonValiderHotel";
 			this.buttonValiderHotel.Size = new System.Drawing.Size(101, 36);
@@ -296,7 +297,7 @@
 			this.textTelephone.ForeColor = System.Drawing.Color.White;
 			this.textTelephone.Location = new System.Drawing.Point(26, 254);
 			this.textTelephone.Name = "textTelephone";
-			this.textTelephone.Size = new System.Drawing.Size(1370, 32);
+			this.textTelephone.Size = new System.Drawing.Size(712, 27);
 			this.textTelephone.TabIndex = 3;
 			// 
 			// textAdresse
@@ -308,7 +309,7 @@
 			this.textAdresse.ForeColor = System.Drawing.Color.White;
 			this.textAdresse.Location = new System.Drawing.Point(26, 187);
 			this.textAdresse.Name = "textAdresse";
-			this.textAdresse.Size = new System.Drawing.Size(1370, 32);
+			this.textAdresse.Size = new System.Drawing.Size(712, 27);
 			this.textAdresse.TabIndex = 2;
 			// 
 			// textNomHotel
@@ -320,7 +321,7 @@
 			this.textNomHotel.ForeColor = System.Drawing.Color.White;
 			this.textNomHotel.Location = new System.Drawing.Point(26, 120);
 			this.textNomHotel.Name = "textNomHotel";
-			this.textNomHotel.Size = new System.Drawing.Size(1370, 32);
+			this.textNomHotel.Size = new System.Drawing.Size(712, 27);
 			this.textNomHotel.TabIndex = 1;
 			// 
 			// textCode
@@ -332,7 +333,7 @@
 			this.textCode.ForeColor = System.Drawing.Color.White;
 			this.textCode.Location = new System.Drawing.Point(26, 53);
 			this.textCode.Name = "textCode";
-			this.textCode.Size = new System.Drawing.Size(1370, 32);
+			this.textCode.Size = new System.Drawing.Size(712, 27);
 			this.textCode.TabIndex = 0;
 			// 
 			// tabPage4
@@ -351,10 +352,10 @@
 			this.tabPage4.Controls.Add(this.textTitre);
 			this.tabPage4.Controls.Add(this.textCommentaire);
 			this.tabPage4.Controls.Add(this.buttonValiderAppreciation);
-			this.tabPage4.Location = new System.Drawing.Point(4, 33);
+			this.tabPage4.Location = new System.Drawing.Point(4, 28);
 			this.tabPage4.Name = "tabPage4";
 			this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage4.Size = new System.Drawing.Size(1439, 678);
+			this.tabPage4.Size = new System.Drawing.Size(781, 683);
 			this.tabPage4.TabIndex = 3;
 			this.tabPage4.Text = "Donner son appréciation";
 			// 
@@ -363,7 +364,7 @@
 			this.labelNote.AutoSize = true;
 			this.labelNote.Location = new System.Drawing.Point(167, 511);
 			this.labelNote.Name = "labelNote";
-			this.labelNote.Size = new System.Drawing.Size(23, 26);
+			this.labelNote.Size = new System.Drawing.Size(18, 20);
 			this.labelNote.TabIndex = 14;
 			this.labelNote.Text = "0";
 			// 
@@ -378,7 +379,7 @@
 			this.panel2.Margin = new System.Windows.Forms.Padding(0);
 			this.panel2.Name = "panel2";
 			this.panel2.Padding = new System.Windows.Forms.Padding(10);
-			this.panel2.Size = new System.Drawing.Size(2208, 84);
+			this.panel2.Size = new System.Drawing.Size(1550, 84);
 			this.panel2.TabIndex = 13;
 			// 
 			// comboChoixHotel
@@ -389,7 +390,7 @@
 			this.comboChoixHotel.FormattingEnabled = true;
 			this.comboChoixHotel.Location = new System.Drawing.Point(95, 27);
 			this.comboChoixHotel.Name = "comboChoixHotel";
-			this.comboChoixHotel.Size = new System.Drawing.Size(1295, 32);
+			this.comboChoixHotel.Size = new System.Drawing.Size(637, 27);
 			this.comboChoixHotel.TabIndex = 0;
 			// 
 			// label3
@@ -397,7 +398,7 @@
 			this.label3.AutoSize = true;
 			this.label3.Location = new System.Drawing.Point(31, 30);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(60, 26);
+			this.label3.Size = new System.Drawing.Size(46, 20);
 			this.label3.TabIndex = 1;
 			this.label3.Text = "Hôtel";
 			// 
@@ -407,7 +408,7 @@
 			this.label12.Location = new System.Drawing.Point(35, 484);
 			this.label12.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
 			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(55, 26);
+			this.label12.Size = new System.Drawing.Size(42, 20);
 			this.label12.TabIndex = 7;
 			this.label12.Text = "Note";
 			// 
@@ -416,7 +417,7 @@
 			this.trackNote.Location = new System.Drawing.Point(34, 511);
 			this.trackNote.Maximum = 5;
 			this.trackNote.Name = "trackNote";
-			this.trackNote.Size = new System.Drawing.Size(127, 56);
+			this.trackNote.Size = new System.Drawing.Size(127, 45);
 			this.trackNote.TabIndex = 6;
 			this.trackNote.Scroll += new System.EventHandler(this.trackNote_Scroll);
 			// 
@@ -426,7 +427,7 @@
 			this.label11.Location = new System.Drawing.Point(31, 306);
 			this.label11.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
 			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(136, 26);
+			this.label11.Size = new System.Drawing.Size(103, 20);
 			this.label11.TabIndex = 5;
 			this.label11.Text = "Commentaire";
 			// 
@@ -436,7 +437,7 @@
 			this.label10.Location = new System.Drawing.Point(31, 239);
 			this.label10.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
 			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(54, 26);
+			this.label10.Size = new System.Drawing.Size(40, 20);
 			this.label10.TabIndex = 4;
 			this.label10.Text = "Titre";
 			// 
@@ -446,7 +447,7 @@
 			this.label9.Location = new System.Drawing.Point(31, 172);
 			this.label9.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
 			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(83, 26);
+			this.label9.Size = new System.Drawing.Size(64, 20);
 			this.label9.TabIndex = 3;
 			this.label9.Text = "Prenom";
 			// 
@@ -456,7 +457,7 @@
 			this.label8.Location = new System.Drawing.Point(31, 105);
 			this.label8.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
 			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(55, 26);
+			this.label8.Size = new System.Drawing.Size(43, 20);
 			this.label8.TabIndex = 2;
 			this.label8.Text = "Nom";
 			// 
@@ -469,7 +470,7 @@
 			this.textNom.ForeColor = System.Drawing.Color.White;
 			this.textNom.Location = new System.Drawing.Point(30, 132);
 			this.textNom.Name = "textNom";
-			this.textNom.Size = new System.Drawing.Size(1360, 32);
+			this.textNom.Size = new System.Drawing.Size(702, 27);
 			this.textNom.TabIndex = 12;
 			// 
 			// textPrenom
@@ -481,7 +482,7 @@
 			this.textPrenom.ForeColor = System.Drawing.Color.White;
 			this.textPrenom.Location = new System.Drawing.Point(30, 199);
 			this.textPrenom.Name = "textPrenom";
-			this.textPrenom.Size = new System.Drawing.Size(1360, 32);
+			this.textPrenom.Size = new System.Drawing.Size(702, 27);
 			this.textPrenom.TabIndex = 11;
 			// 
 			// textTitre
@@ -493,7 +494,7 @@
 			this.textTitre.ForeColor = System.Drawing.Color.White;
 			this.textTitre.Location = new System.Drawing.Point(30, 266);
 			this.textTitre.Name = "textTitre";
-			this.textTitre.Size = new System.Drawing.Size(1360, 32);
+			this.textTitre.Size = new System.Drawing.Size(702, 27);
 			this.textTitre.TabIndex = 10;
 			// 
 			// textCommentaire
@@ -506,7 +507,7 @@
 			this.textCommentaire.Location = new System.Drawing.Point(30, 333);
 			this.textCommentaire.Multiline = true;
 			this.textCommentaire.Name = "textCommentaire";
-			this.textCommentaire.Size = new System.Drawing.Size(1360, 138);
+			this.textCommentaire.Size = new System.Drawing.Size(702, 138);
 			this.textCommentaire.TabIndex = 9;
 			// 
 			// buttonValiderAppreciation
@@ -516,7 +517,7 @@
 			this.buttonValiderAppreciation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(126)))), ((int)(((byte)(53)))));
 			this.buttonValiderAppreciation.FlatAppearance.BorderSize = 0;
 			this.buttonValiderAppreciation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonValiderAppreciation.Location = new System.Drawing.Point(1282, 609);
+			this.buttonValiderAppreciation.Location = new System.Drawing.Point(624, 609);
 			this.buttonValiderAppreciation.Margin = new System.Windows.Forms.Padding(20, 20, 20, 30);
 			this.buttonValiderAppreciation.Name = "buttonValiderAppreciation";
 			this.buttonValiderAppreciation.Size = new System.Drawing.Size(108, 36);
@@ -527,15 +528,17 @@
 			// 
 			// FormHotels
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-			this.ClientSize = new System.Drawing.Size(1465, 733);
+			this.ClientSize = new System.Drawing.Size(807, 733);
 			this.Controls.Add(this.tabPanel);
 			this.Font = new System.Drawing.Font("Open Sans", 10.8F);
 			this.ForeColor = System.Drawing.Color.White;
 			this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.Name = "FormHotels";
+			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+			this.Text = "Gestion des hôtels";
 			this.Load += new System.EventHandler(this.FormHotels_Load);
 			this.tabPage1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridListHotels)).EndInit();

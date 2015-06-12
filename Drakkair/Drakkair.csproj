@@ -106,6 +106,9 @@
     <EmbeddedResource Include="FormPanelAdmin.resx">
       <DependentUpon>FormPanelAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormRecapTransaction.resx">
+      <DependentUpon>FormRecapTransaction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormVisuOffres.resx">
       <DependentUpon>FormVisuOffres.cs</DependentUpon>
     </EmbeddedResource>

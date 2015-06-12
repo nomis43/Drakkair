@@ -412,7 +412,11 @@ namespace Drakkair
 		/// </summary>
 		private void buttonDetailsOffres_Click(object sender, EventArgs e)
 		{
-            new FormVisuOffres(DB).ShowDialog();
+			this.Hide();
+            FormVisuOffres f = new FormVisuOffres(DB);
+			f.ShowDialog();
+			f.Dispose();
+			this.Show();
 		}
 		// ----------------------------------------------------------------
 
@@ -421,7 +425,9 @@ namespace Drakkair
 		/// </summary>
 		private void buttonAdmin_Click(object sender, EventArgs e)
 		{
+			this.Hide();
             new FormPanelAdmin(DB).ShowDialog();
+			this.Show();
 		}
 		// ----------------------------------------------------------------
 

@@ -23,6 +23,8 @@ namespace Drakkair.Controls
 			this.Name = "buttonAdmin";
 			this.AutoSize = true;
 			this.Text = "CLICK ME";
+
+			this.FlatAppearance.BorderSize = 0;
 			
 			this.FlatAppearance.BorderSize = 0;
 			this.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
